@@ -1,0 +1,10 @@
+$\int\frac{4x}{\sqrt{x^2+1}}dx$
+$\text{replace the complex part with "u"}$
+$u = x^2+1$
+$du = u' = 2x$
+$dx = \frac{du}{u'} = \frac{du}{2x}$
+$\int\frac{4x}{\sqrt{u}}dx\\rightarrow \int(\frac{4x}{\sqrt{u}})(\frac{du}{2x})$
+$\rightarrow \frac{4x * du}{\sqrt{u}*2x}$$
+$\text{4x and 2x correspond so we divide them out which leaves 2}$
+$\text{bring the 2 out in front of the integral}$
+$2\int\frac{du}{\sqrt{u}}$
