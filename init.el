@@ -1,20 +1,3 @@
-;;function to auto-download a list of packages\
-;;-list the packages you want
-(setq package-list '(pabbrev))
-(setq package-list '(solarized-theme))
-(setq package-list '(moody))
-(setq package-list '(synosaurus))
-(setq package-list '(org))
-(setq package-list '(diff-hl))
-(setq package-list '(org-bullets))
-(setq package-list '(latex-pretty-symbols))
-(setq package-list '(use-package))
-(setq package-list '(use-package-ensure))
-(setq package-list '(flyspell))
-(setq package-list '(minions))
-(setq package-list '(htmlize))
-(setq package-list '(ox-twbs))
-
 ;;-list the repositories containing them
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("elpa" . "http://tromey.com/elpa/")
@@ -23,23 +6,46 @@
 
 ;;-activate all the packages (in particular autoloads)
 (package-initialize)
+(require 'package)
 
-;;-fetch the list of packages available
-(or (file-exists-p package-user-dir) (package-refresh-contents))
+;;function to auto-download a list of packages\
+;;-list the packages you want
+(use-package pabbrev
+  :ensure t)
+(use-package solarized-theme
+  :ensure t)
+(use-package moody
+  :ensure t)
+(use-package synosaurus
+  :ensure t)
+(use-package org
+  :ensure t)
+(use-package diff-hl
+  :ensure t)
+(use-package org-bullets
+  :ensure t)
+(use-package latex-pretty-symbols
+  :ensure t)
+(use-package flyspell
+  :ensure t)
+(use-package minions
+  :ensure t)
+(use-package htmlize
+  :ensure t)
+(use-package ox-twbs
+  :ensure t)
 
 ;;-install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-(require 'package)
+(dolist (package '(use-package))
+   (unless (package-installed-p package)
+       (package-install package)))
 
 ;; If use-package isn't already installed, it's extremely likely that this is a
 ;; fresh installation! So we'll want to update the package repository and
 ;; install use-package before loading the literate configuration.
-(when (not (package-installed-p 'use-package))
-  (package-refresh-contents)
-  (package-install 'use-package))
+;;(when (not (package-installed-p 'use-package))
+;;(package-refresh-contents)
+;;(package-install 'use-package))
 
 ;;function to save macros
 (defun save-macro (name)

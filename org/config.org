@@ -94,7 +94,7 @@
 
 ;;set default font
 (setq kcp/default-font "Inconsolata")
-(setq kcp/default-font-size 14)
+(setq kcp/default-font-size 16)
 (setq kcp/current-font-size kcp/default-font-size)
 
 (setq kcp/font-change-increment 1.1)
