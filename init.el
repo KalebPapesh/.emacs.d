@@ -14,8 +14,9 @@
   :ensure t)
 (use-package solarized-theme
   :ensure t)
-(use-package moody
-  :ensure t)
+(if (display-graphic-p)
+    (use-package moody
+      :ensure t))
 (use-package synosaurus
   :ensure t)
 (use-package org
