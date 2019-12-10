@@ -86,7 +86,7 @@
 
 ;;set default font
 (setq kcp/default-font "Inconsolata")
-(setq kcp/default-font-size 16)
+(setq kcp/default-font-size 20)
 (setq kcp/current-font-size kcp/default-font-size)
 
 (setq kcp/font-change-increment 1.1)
@@ -269,7 +269,8 @@ other, future frames."
 
 ;;quickly insert a block of elisp
 (add-to-list 'org-structure-template-alist
-             '("el" . "src emacs-lisp"))
+             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
 
 ;;keybindings
 (define-key global-map "\C-cl" 'org-store-link)
@@ -382,14 +383,24 @@ other, future frames."
 ;;template sections
 (define-auto-insert "\\.sh\\'" "my-sh-template.sh")
 
-(if (not (display-graphic-p))
-(setq default-frame-alist
-      '((background-color . "black")
-	(foreground-color . "green"))))
+;;(if (not (display-graphic-p))
+;;(setq default-frame-alist
+;;      '((background-color . "black")
+;;	(foreground-color . "green"))))
 
-(load-theme 'solarized-dark t)
+(if (display-graphic-p)
+ (load-theme 'solarized-dark t)
+ (setq default-frame-alist
+     '((background-color . "black")
+      (foreground-color . "green"))))
 
-    (if (daemonp)
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
+
+(if (daemonp)
 	(cl-labels ((load-solarized (frame)
 			       (with-selected-frame frame
 				 (load-theme 'solarized-dark t))
