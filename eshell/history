@@ -1,0 +1,7 @@
+/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Utilities/Terminal.app/Contents/
+sudo /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Utilities/Terminal.app/Contents/
+sudo /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Utilities/Terminal.app/Content
+mdls -name kMDItemCFBundleIdentifier -r /Applications/Utilities/Terminal.app
+mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
+mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
+mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app 
