@@ -7,4 +7,5 @@ emacs init files
 3. run the commands below:
 
 `sudo cp -r .emacs.d{,.bak} && sudo rm -rf .emacs.d`
+
 `sudo git clone https://github.com/KalebPapesh/.emacs.d.git`
