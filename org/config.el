@@ -356,11 +356,12 @@ other, future frames."
 (load-directory "~/.emacs.d/custom-el-files/")
 
 ;;load custom themes
+(if (file-directory-p (expand-file-name "~/.emacs.d/themes"))
     (let ((basedir "~/.emacs.d/themes/"))
       (dolist (f (directory-files basedir))
         (if (and (not (or (equal f ".") (equal f "..")))
                  (file-directory-p (concat basedir f)))
-            (add-to-list 'custom-theme-load-path (concat basedir f)))))
+            (add-to-list 'custom-theme-load-path (concat basedir f))))))
 
 ;;save scripts as executable upon save
 (add-hook 'after-save-hook
