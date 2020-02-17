@@ -141,83 +141,6 @@ other, future frames."
 (kcp/reset-font-size)
 #+END_SRC
 
-* Buffers & Modes
-#+BEGIN_SRC emacs-lisp
-;;always use ibuffer
-(defalias 'list-buffers 'ibuffer)
-
-;;set default major-mode
-(setq-default major-mode 'text-mode)
-
-;;stop annoying backup files
-(setq make-backup-files nil)
-
-;;make autosave on the file rather than a separate file
-(setq auto-save-visited-mode t)
-
-;;change yes or no to y or p
-(fset `yes-or-no-p `y-or-n-p)
-
-;; Set Linum-Mode on
-(global-linum-mode t)
-
-;; Linum-Mode and add space after the number
-(setq linum-format "%d ")
-
-;;suppress symbolic link warnings
-(setq find-file-visit-truename t)
-
-;;show matching parens
-(show-paren-mode 1)
-
-;;overwrite the selected region after marking and yanking. ie cut and paste
-(delete-selection-mode 1)
-
-;;auto update buffer if changes are made to file.
-(global-auto-revert-mode t)
-
-;;global pabbrev-mode
-(global-pabbrev-mode 1)
-
-;;tex-mode stuff
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq TeX-save-query nil)
-(setq TeX-PDF-mode t)
-(require 'latex-pretty-symbols)
-
-
-;;spell check
-(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
-(setq ispell-dictionary "english")
-
-;;setup files ending in .DTA to open in hexl-mode
-(add-to-list 'auto-mode-alist '("\\.DTA\\'" . hexl-mode))
-
-;;overwrite the selected region after marking and yanking. ie cut and paste
-(delete-selection-mode 1)
-
-;;auto update buffer if changes are made to file
-(global-auto-revert-mode t)
-
-;;switch to new window automatically when splitting
-(defun kcp/split-window-below-and-switch ()
-  "Split the window horizontally, then switch to the new pane."
-  (interactive)
-  (split-window-below)
-  (balance-windows)
-  (other-window 1))
-
-(defun kcp/split-window-right-and-switch ()
-  "Split the window vertically, then switch to the new pane."
-  (interactive)
-  (split-window-right)
-  (balance-windows)
-  (other-window 1))
-
-(global-set-key (kbd "C-x 2") 'kcp/split-window-below-and-switch)
-(global-set-key (kbd "C-x 3") 'kcp/split-window-right-and-switch)
-#+END_SRC
 * Writing
 #+BEGIN_SRC emacs-lisp
 ;; look up definitions in Webster 1913 w/ C-x w
@@ -248,6 +171,16 @@ other, future frames."
 #+BEGIN_SRC emacs-lisp
 ;;save my location within a file
 (save-place-mode t)
+
+;;use tramp
+(require 'tramp)
+(setq tramp-default-user "papkaleb" tramp-default-host "tyrell")
+(setq make-backup-files nil) (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+;;require html-check frag
+(require 'html-check-frag)
 #+END_SRC
 * Org Stuff
 #+BEGIN_SRC emacs-lisp
@@ -406,6 +339,87 @@ other, future frames."
 ;;template sections
 (define-auto-insert "\\.sh\\'" "my-sh-template.sh")
 
+#+END_SRC
+* Buffers & Modes
+#+BEGIN_SRC emacs-lisp
+;;always use ibuffer
+(defalias 'list-buffers 'ibuffer)
+
+;;set default major-mode
+(setq-default major-mode 'text-mode)
+
+;;stop annoying backup files
+(setq make-backup-files nil)
+
+;;make autosave on the file rather than a separate file
+(setq auto-save-visited-mode t)
+
+;;change yes or no to y or p
+(fset `yes-or-no-p `y-or-n-p)
+
+;; Set Linum-Mode on
+(global-linum-mode t)
+
+;; Linum-Mode and add space after the number
+(setq linum-format "%d ")
+
+;;suppress symbolic link warnings
+(setq find-file-visit-truename t)
+
+;;show matching parens
+(show-paren-mode 1)
+
+;;overwrite the selected region after marking and yanking. ie cut and paste
+(delete-selection-mode 1)
+
+;;auto update buffer if changes are made to file.
+(global-auto-revert-mode t)
+
+;;global pabbrev-mode
+(global-pabbrev-mode 1)
+
+;;tex-mode stuff
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq TeX-save-query nil)
+(setq TeX-PDF-mode t)
+(require 'latex-pretty-symbols)
+
+
+;;spell check
+(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
+(setq ispell-dictionary "english")
+
+;;setup files ending in .DTA to open in hexl-mode
+(add-to-list 'auto-mode-alist '("\\.DTA\\'" . hexl-mode))
+
+;;setup files ending in .template to open in jinja2-mode
+(add-to-list 'auto-mode-alist '("\\.template\\'" . jinja2-mode))
+(autoload 'jinja2-mode "Major mode for editing jinja2 code." t)
+
+;;overwrite the selected region after marking and yanking. ie cut and paste
+(delete-selection-mode 1)
+
+;;auto update buffer if changes are made to file
+(global-auto-revert-mode t)
+
+;;switch to new window automatically when splitting
+(defun kcp/split-window-below-and-switch ()
+  "Split the window horizontally, then switch to the new pane."
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+
+(defun kcp/split-window-right-and-switch ()
+  "Split the window vertically, then switch to the new pane."
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+
+(global-set-key (kbd "C-x 2") 'kcp/split-window-below-and-switch)
+(global-set-key (kbd "C-x 3") 'kcp/split-window-right-and-switch)
 #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp

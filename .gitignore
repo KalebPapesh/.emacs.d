@@ -1,2 +1,6 @@
 *.dat
 *.data
+auto-save-list/
+elpa/
+eshell/history
+/home/papkaleb/.emacs.d/places

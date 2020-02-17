@@ -75,7 +75,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil org-ac magit live-preview diff-hl use-package synosaurus solarized-theme pabbrev org-bullets moody minions latex-pretty-symbols gnuplot auto-compile))))
+    (web-mode-edit-element web-search web-server poly-ansible html-check-frag org-ac magit live-preview diff-hl use-package synosaurus solarized-theme pabbrev org-bullets moody minions latex-pretty-symbols gnuplot auto-compile))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
