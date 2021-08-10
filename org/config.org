@@ -25,120 +25,127 @@
 #+END_SRC
 * Display Preferences
 #+BEGIN_SRC emacs-lisp
-;;remove toolbar, menu, & scrollbar;
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(if (display-graphic-p)
-  (scroll-bar-mode -1))
+  ;;remove toolbar, menu, & scrollbar;
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (if (display-graphic-p)
+    (scroll-bar-mode -1))
 
-;; Tell emacs where is your personal elisp lib dir
-(add-to-list 'load-path "~/.emacs.d/custom-el-files/")
-(if (not (display-graphic-p))
-  (setq mac-command-modifier 'alt mac-option-modifier 'meta))
-(require 'redo)
-(require 'mac-key-mode)
-(mac-key-mode 1)
+  ;; Tell emacs where is your personal elisp lib dir
+  (add-to-list 'load-path "~/.emacs.d/custom-el-files/")
+  (if (not (display-graphic-p))
+    (setq mac-command-modifier 'alt mac-option-modifier 'meta))
+  (require 'redo)
+  (require 'mac-key-mode)
+  (require 'dired+)
+  (mac-key-mode 1)
 
-;;remove scrollbar in minibuffer
-(set-window-scroll-bars (minibuffer-window) nil nil)
+  ;;remove scrollbar in minibuffer
+  (set-window-scroll-bars (minibuffer-window) nil nil)
 
-;;remove default start-up buffer
-(setq inhibit-startup-message t)
+  ;;remove default start-up buffer
+  (setq inhibit-startup-message t)
 
-;;implement colour coding
-(global-font-lock-mode t)
+  ;;implement colour coding
+  (global-font-lock-mode t)
 
-;;show pretty symbols
-(global-prettify-symbols-mode t)
+  ;;show pretty symbols
+  (global-prettify-symbols-mode t)
 
-;;use moody modeline if using gui
-(if (display-graphic-p)
-(use-package moody
-  :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)))
+  ;; disable dired problomatic keys
+  (setq diredp-bind-problematic-terminal-keys nil)
 
-;;never show minor modes
-(use-package minions
-  :config
-  (setq minions-mode-line-lighter ""
-        minions-mode-line-delimiters '("" . ""))
-  (minions-mode 1))
+  ;;use dired sidebar
+  (use-package dired-sidebar
+    :ensure t
+    :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+    :commands (dired-sidebar-toggle-sidebar))
+  (add-to-list 'load-path "path from pwd")
+  (require 'dired-sidebar)
 
-;;softly highlight the background of a line
-(if (display-graphic-p)
-  (global-hl-line-mode))
+  ;;use moody modeline if using gui
+  (if (display-graphic-p)
+  (use-package moody
+    :config
+    (setq x-underline-at-descent-line t)
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-vc-mode)))
 
-;;show highlite different changes
-(use-package diff-hl
-  :config
-  (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
-  (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
+  ;;never show minor modes
+  (use-package minions
+    :config
+    (setq minions-mode-line-lighter ""
+	  minions-mode-line-delimiters '("" . ""))
+    (minions-mode 1))
 
-;;change the ... for minimized org things
-(setq org-ellipsis " ->>")
-(setq org-src-fontify-natively t)
-(setq org-src-window-setup 'current-window)
-(add-to-list 'org-structure-template-alist
-             '("el" . "src emacs-lisp"))
+  ;;softly highlight the background of a line
+  (if (display-graphic-p)
+    (global-hl-line-mode))
 
-;;remove the window title
-;;(setq frame-title-format '((:eval (projectile-project-name))))
+  ;;show highlite different changes
+  (use-package diff-hl
+    :config
+    (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+    (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
 
-;;  This makes Emacs ignore the "-e (make-frame-visible)"
-;;  that it gets passed when started by emacsclientw.
-;;
-;;(add-to-list 'command-switch-alist '("(raise-frame)" .
-;;				     (lambda (s))))
+  ;;change the ... for minimized org things
+  (setq org-ellipsis " ->>")
+  (setq org-src-fontify-natively t)
+  (setq org-src-window-setup 'current-window)
+  (add-to-list 'org-structure-template-alist
+	       '("el" . "src emacs-lisp"))
 
-;;set default font
-(setq kcp/default-font "Inconsolata")
-(setq kcp/default-font-size 20)
-(setq kcp/current-font-size kcp/default-font-size)
+  ;;add robe for ruby ide functions
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'robe-mode-hook 'ac-robe-setup)
 
-(setq kcp/font-change-increment 1.1)
-
-(defun kcp/font-code ()
-  "Return a string representing the current font (like \"Inconsolata-14\")."
-  (concat kcp/default-font "-" (number-to-string kcp/current-font-size)))
-
-(defun kcp/set-font-size ()
-  "Set the font to `kcp/default-font' at `kcp/current-font-size'.
-Set that for the current frame, and also make it the default for
-other, future frames."
-  (let ((font-code (kcp/font-code)))
-    (add-to-list 'default-frame-alist (cons 'font font-code))
-    (set-frame-font font-code)))
-
-(defun kcp/reset-font-size ()
-  "Change font size back to `kcp/default-font-size'."
-  (interactive)
+  ;;set default font
+  (setq kcp/default-font "Inconsolata")
+  (setq kcp/default-font-size 20)
   (setq kcp/current-font-size kcp/default-font-size)
-  (kcp/set-font-size))
 
-(defun kcp/increase-font-size ()
-  "Increase current font size by a factor of `kcp/font-change-increment'."
-  (interactive)
-  (setq kcp/current-font-size
-        (ceiling (* kcp/current-font-size kcp/font-change-increment)))
-  (kcp/set-font-size))
+  (setq kcp/font-change-increment 1.1)
 
-(defun kcp/decrease-font-size ()
-  "Decrease current font size by a factor of `kcp/font-change-increment', down to a minimum size of 1."
-  (interactive)
-  (setq kcp/current-font-size
-        (max 1
-             (floor (/ kcp/current-font-size kcp/font-change-increment))))
-  (kcp/set-font-size))
+  (defun kcp/font-code ()
+    "Return a string representing the current font (like \"Inconsolata-14\")."
+    (concat kcp/default-font "-" (number-to-string kcp/current-font-size)))
 
-(define-key global-map (kbd "C-)") 'kcp/reset-font-size)
-(define-key global-map (kbd "C-+") 'kcp/increase-font-size)
-(define-key global-map (kbd "C-=") 'kcp/increase-font-size)
-(define-key global-map (kbd "C-_") 'kcp/decrease-font-size)
-(define-key global-map (kbd "C--") 'kcp/decrease-font-size)
+  (defun kcp/set-font-size ()
+    "Set the font to `kcp/default-font' at `kcp/current-font-size'.
+  Set that for the current frame, and also make it the default for
+  other, future frames."
+    (let ((font-code (kcp/font-code)))
+      (add-to-list 'default-frame-alist (cons 'font font-code))
+      (set-frame-font font-code)))
 
-(kcp/reset-font-size)
+  (defun kcp/reset-font-size ()
+    "Change font size back to `kcp/default-font-size'."
+    (interactive)
+    (setq kcp/current-font-size kcp/default-font-size)
+    (kcp/set-font-size))
+
+  (defun kcp/increase-font-size ()
+    "Increase current font size by a factor of `kcp/font-change-increment'."
+    (interactive)
+    (setq kcp/current-font-size
+	  (ceiling (* kcp/current-font-size kcp/font-change-increment)))
+    (kcp/set-font-size))
+
+  (defun kcp/decrease-font-size ()
+    "Decrease current font size by a factor of `kcp/font-change-increment', down to a minimum size of 1."
+    (interactive)
+    (setq kcp/current-font-size
+	  (max 1
+	       (floor (/ kcp/current-font-size kcp/font-change-increment))))
+    (kcp/set-font-size))
+
+  (define-key global-map (kbd "C-)") 'kcp/reset-font-size)
+  (define-key global-map (kbd "C-+") 'kcp/increase-font-size)
+  (define-key global-map (kbd "C-=") 'kcp/increase-font-size)
+  (define-key global-map (kbd "C-_") 'kcp/decrease-font-size)
+  (define-key global-map (kbd "C--") 'kcp/decrease-font-size)
+
+  (kcp/reset-font-size)
 #+END_SRC
 
 * Writing
@@ -169,96 +176,204 @@ other, future frames."
 
 * Editing
 #+BEGIN_SRC emacs-lisp
-;;save my location within a file
-(save-place-mode t)
+  ;;save my location within a file
+  (save-place-mode t)
 
-;;use tramp
-(require 'tramp)
-(setq tramp-default-user "papkaleb" tramp-default-host "tyrell")
-(setq make-backup-files nil) (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+  ;;make C-w kill-region again
+  (global-set-key "\C-w" 'kill-region)
 
-#+END_SRC
-#+BEGIN_SRC emacs-lisp
-;;require html-check frag
-(require 'html-check-frag)
+  ;; make unix lineendings default
+  (setq default-buffer-file-coding-system 'utf-8-unix)
+  (set-language-environment "UTF-8")
+
+  ;;load emacs-eshell.org file
+  (org-babel-load-file "~/.emacs.d/org/remote-shell.org")
+
+  ;;use tramp
+  (require 'tramp)
+  (setq tramp-default-method "ssh")
+  (setq tramp-terminal-type "dumb")
+  (setq tramp-terminal-prompt-regexp "> ")
+  (setq tramp-default-user "papkaleb")
+  (setq tramp-default-host "papkaleb-deckard.aka.corp.amazon.com")
+
+  ;;set global autocomplete mode
+  (ac-config-default)
+  (global-auto-complete-mode t)
+
+  ;;set dumb terminal type to bash shell
+  (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
+  ;;make tramp respect the PATH variable on the remote machine
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+  ;;open shell in it's own buffer not splitscreen
+  (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+
+  (defun term-switch-to-shell-mode ()
+  (interactive)
+  (shell-mode)
+  (set-process-filter  (get-buffer-process (current-buffer)) 'comint-output-filter )
+  (compilation-shell-minor-mode 1)
+  (comint-send-input))
+
+  ;;switch to term mode with C-l
+  (defun shell-switch-to-term-mode ()
+  (compilation-shell-minor-mode -1)
+  (font-lock-mode -1)
+  (set-process-filter  (get-buffer-process (current-buffer)) 'term-emulate-terminal)
+  (term-mode)
+  (term-char-mode)
+  (term-send-raw-string (kbd "C-l")))
+
+  ;; My DevDesktop has quite a few consumed environments on it.  Adding
+  ;; each of their "bin" directories to my tramp list.
+  (add-to-list 'tramp-remote-path "/apollo/env/RemoteCommand/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/dotfiles/zshrc")
+  ;; For some reason, a few of the machines I go to have different cases for envImprovement...
+  (add-to-list 'tramp-remote-path "/home/papkaleb/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/AmazonAwsCli/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/ApolloCommandLine/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/BarkCLI/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DevDesktop/")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSCMCutter/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools_UltraDNS/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/EnvImprovement/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/OctaneBrazilTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/OdinTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/SDETools/bin")
+
+
+  ;; I don't like my history littering many spots, and don't always have a home directory on remotes.
+  (setq tramp-histfile-override "/tmp/.papkaleb_tramp_history")
+
+  ;;open a remote shell via tramp
+  ;; (defun tyrell ()
+  ;;       (interactive)
+  ;;       (let ((default-directory "/ssh:papkaleb@papkaleb-tyrell.aka.corp.amazon.com:"))
+  ;; 	( shell)))
+
+    ;;configure diff-hl
+    (use-package diff-hl
+      :config
+      (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+      (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
+
+    ;;require html-check frag
+    (require 'html-check-frag)
 #+END_SRC
 * Org Stuff
 #+BEGIN_SRC emacs-lisp
-;;twitter bootstrap export
-(require 'ox-twbs)
+  ;;twitter bootstrap export
+  (require 'ox-twbs)
 
-;;tab to autocomplete org mode
-;;(require 'auto-complete)
-;;(add-to-list 'ac-modes 'org-mode)
-;;(ac-set-trigger-key "tab")
-(require 'org-ac)
-(org-ac/config-default)
+  ;;tab to autocomplete org mode
+  ;;(require 'auto-complete)
+  ;;(add-to-list 'ac-modes 'org-mode)
+  ;;(ac-set-trigger-key "tab")
+  (require 'org-ac)
+  (org-ac/config-default)
 
-;;have nice collapse arrows
-(setq org-ellipsis "⤵")
+  (require 'org-habit)
 
-;;org mode bullets
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-hide-leading-stars t)
+  ;;have nice collapse arrows
+  (setq org-ellipsis "⤵")
 
-;;use syntax highlighting in source blocks while editing
-(setq org-src-fontify-natively t)
+  ;;org mode bullets
+  (require 'org-bullets)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (setq org-hide-leading-stars t)
 
-;;word wrap in every textmode
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+  ;;use syntax highlighting in source blocks while editing
+  (setq org-src-fontify-natively t)
 
-;;make TAB act as if it were issued in a buffer of the languages major mode
-;;(setq org-src-tab-acts-natively t)
+  ;;word wrap in every textmode
+  (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
-;;autocomplete with tab in org mode
-;;(add-to-list 'ac-modes 'org-mode)
-;;(ac-set-trigger-key "TAB")
+  ;;make TAB act as if it were issued in a buffer of the languages major mode
+  (setq org-src-tab-acts-natively t)
 
-;;when editing a code snippet, use current window
-(setq org-src-window-setup 'current-window)
+  ;;autocomplete with tab in org mode
+  ;;(add-to-list 'ac-modes 'org-mode)
+  ;;(ac-set-trigger-key "TAB")
 
-;;quickly insert a block of elisp
-(add-to-list 'org-structure-template-alist
-             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
-	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+  ;;when editing a code snippet, use current window
+  (setq org-src-window-setup 'current-window)
 
-;;keybindings
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cc" 'org-capture)
+  ;;quickly insert a block of elisp
+  (add-to-list 'org-structure-template-alist
+	       '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+	       '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
 
-;;exporting to PDF
-(setq org-latex-pdf-process
-      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  ;;keybindings
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-cc" 'org-capture)
 
-;;include =minted= package in all of my LaTeX exports
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
+  ;;exporting to PDF
+  (setq org-latex-pdf-process
+	'("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	  "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	  "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-;;task and org-capture management
-(setq org-directory "~/Dropbox/orgdocs")
+  ;;include =minted= package in all of my LaTeX exports
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
 
-(defun org-file-path (filename)
-  "Return the absolute address of an org file, given its relative name."
-  (concat (file-name-as-directory org-directory) filename))
+  ;;task and org-capture management
+  (setq org-directory "~/Dropbox/orgdocs/")
 
-(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
-(setq org-index-file (org-file-path "index.org"))
-(setq org-archive-location
-      (concat (org-file-path "archive.org") "::* From %s"))
+  (defun org-file-path (filename)
+    "Return the absolute address of an org file, given its relative name."
+    (concat (file-name-as-directory org-directory) filename))
 
-;;set TODO states
-(setq org-todo-keywords
-  '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
+  ;;(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
+  ;;(setq org-index-file (org-file-path "index.org"))
+  (setq org-archive-location
+	(concat (org-file-path "archive.org") "::* From %s"))
 
-;;store TODOs in index.org
-(setq org-agenda-files (list org-index-file))
+  (setq org-agenda-files (list "~/Dropbox/orgdocs/amazon/work.org"
+			       "~/Dropbox/orgdocs/school/school.org"
+			       "~/Dropbox/orgdocs/home.org"
+			       "~/Dropbox/orgdocs/timelog.org"
+			       "~/Dropbox/orgdocs/taskdiary.org"
+			       "~/Dropbox/orgdocs/workjournal.org"))
+  ;;set TODO states
+  (setq org-todo-keywords
+    '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
 
-;;use syntax hi
-(setq org-src-fontify-natively t)
+  ;;store TODOs in index.org
+  ;;(setq org-agenda-files (list org-index-file))
+
+  ;;use syntax hi
+  (setq org-src-fontify-natively t)
+
+  ;;ORG Capture stuff
+  (setq org-capture-templates
+   '(
+  ("a" "Appointment" entry (file+headline
+  "~/Dropbox/orgdocs/taskdiary.org" "Calendar")
+  "* APPT %^{Description} %^g
+  %?
+  Added: %U")
+  ("n" "Notes" entry (file+datetree
+  "~/Dropbox/orgdocs/taskdiary.org")
+  "* %^{Description} %^g %?
+  Added: %U")
+  ("t" "Task Diary" entry (file+datetree
+  "~/Dropbox/orgdocs/taskdiary.org")
+  "* TODO %^{Description}  %^g
+  %?
+  Added: %U")
+  ("j" "Journal" entry (file+datetree
+  "~/Dropbox/orgdocs/workjournal.org")
+  "** %^{Heading}")
+  ("l" "Log Time" entry (file+datetree
+  "~/Dropbox/orgdocs/timelog.org" )
+  "** %U - %^{Activity}  :TIME:")
+  ))
 #+END_SRC
 * Exporting
 #+BEGIN_SRC emacs-lisp
@@ -299,6 +414,24 @@ other, future frames."
           (lambda ()
             (LaTeX-math-mode)
             (setq TeX-master t)))
+#+END_SRC
+* Chat & Media
+#+BEGIN_SRC emacs-lisp
+  (require 'erc)
+ ;; (require 'tls)
+
+  (defun aws-erc-start-or-switch ()
+    "Connect to ERC, or switch to last active buffer"
+    (interactive)
+    (if (get-buffer "ircs.amazon.com:6697") ;; ERC already active?
+
+        (erc-track-switch-buffer 1) ;; yes: switch to last active
+      (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
+        (erc-tls
+         :server "ircs.amazon.com"
+         :port 6697 :nick (getenv "USER")
+         :full-name 'user-full-name
+         ))))
 #+END_SRC
 * Custom Functions
 #+BEGIN_SRC emacs-lisp
@@ -395,7 +528,6 @@ other, future frames."
 
 ;;setup files ending in .template to open in jinja2-mode
 (add-to-list 'auto-mode-alist '("\\.template\\'" . jinja2-mode))
-(autoload 'jinja2-mode "Major mode for editing jinja2 code." t)
 
 ;;overwrite the selected region after marking and yanking. ie cut and paste
 (delete-selection-mode 1)

@@ -5,3 +5,52 @@ mdls -name kMDItemCFBundleIdentifier -r /Applications/Utilities/Terminal.app
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app 
+ls
+cd ~/
+ls
+ls
+cd ../../
+ls
+ls
+ls
+cd ../../
+ls /apollo/env/
+whoami
+hostname
+w
+lcd
+lcd
+lcd ~/
+lcd
+cd ../../
+git add dns-templates/PDNS/PDNSDB-master-failover-new.template 
+git status
+git commit -m "Made changes to PDNSDB-master-failover-new.template"
+cr
+su
+sudo
+sudo -u
+sudo -u papkaleb
+cd /apollo/env/DNSCMCutter/bin/
+cd /ssh:papkaleb@papkaleb-tyrell.aka.corp.amazon.com:/apollo/env/DNSCMCutter/bin/
+pwd
+echo "mkdir -r $(pwd)db-patching/wk6/dub"
+pwd
+echo "mkdir -r db-patching/wk6/dub"
+echo "mkdir -r $(pwd)db-patching/wk6/dub"
+echo "$(pwd)"
+$(pwd)expand-hostclass PDNS-EUWEST
+expand-hostclass PDNS-EUWEST
+ls
+echo $PATH
+ls /apollo/
+ls $(pwd)/apollo/
+ls $(pwd | grep -v Directory )/apollo/
+ls $(pwd | grep -v Directory)/apollo/
+cd ~/
+ls
+printenv | sort > ~/withtramp.txt
+ls papkaleb@papkaleb-tyrell.aka.corp.amazon.com/
+ls papkaleb@papkaleb-tyrell.aka.corp.amazon.com:/
+echo $TERM
+echo $PS1

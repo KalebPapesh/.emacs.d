@@ -11,3 +11,11 @@
 
 ;;whitespace
 (global-set-key (kbd "C-c d w") 'whack-whitespace)
+
+;;find config file
+(global-set-key (kbd "C-c e")
+		(lambda () (interactive) (find-file "~/.emacs.d/org/config.org")))
+
+;;find init.el file
+(global-set-key (kbd "C-c i")
+		(lambda () (interactive) (find-file "~/.emacs.d/init.el")))

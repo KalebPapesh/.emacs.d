@@ -29,6 +29,7 @@
   (setq mac-command-modifier 'alt mac-option-modifier 'meta))
 (require 'redo)
 (require 'mac-key-mode)
+(require 'dired+)
 (mac-key-mode 1)
 
 ;;remove scrollbar in minibuffer
@@ -43,6 +44,17 @@
 ;;show pretty symbols
 (global-prettify-symbols-mode t)
 
+;; disable dired problomatic keys
+(setq diredp-bind-problematic-terminal-keys nil)
+
+;;use dired sidebar
+(use-package dired-sidebar
+  :ensure t
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :commands (dired-sidebar-toggle-sidebar))
+(add-to-list 'load-path "path from pwd")
+(require 'dired-sidebar)
+
 ;;use moody modeline if using gui
 (if (display-graphic-p)
 (use-package moody
@@ -55,7 +67,7 @@
 (use-package minions
   :config
   (setq minions-mode-line-lighter ""
-        minions-mode-line-delimiters '("" . ""))
+	minions-mode-line-delimiters '("" . ""))
   (minions-mode 1))
 
 ;;softly highlight the background of a line
@@ -73,16 +85,11 @@
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
 (add-to-list 'org-structure-template-alist
-             '("el" . "src emacs-lisp"))
+	     '("el" . "src emacs-lisp"))
 
-;;remove the window title
-;;(setq frame-title-format '((:eval (projectile-project-name))))
-
-;;  This makes Emacs ignore the "-e (make-frame-visible)"
-;;  that it gets passed when started by emacsclientw.
-;;
-;;(add-to-list 'command-switch-alist '("(raise-frame)" .
-;;				     (lambda (s))))
+;;add robe for ruby ide functions
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;;set default font
 (setq kcp/default-font "Inconsolata")
@@ -113,15 +120,15 @@ other, future frames."
   "Increase current font size by a factor of `kcp/font-change-increment'."
   (interactive)
   (setq kcp/current-font-size
-        (ceiling (* kcp/current-font-size kcp/font-change-increment)))
+	(ceiling (* kcp/current-font-size kcp/font-change-increment)))
   (kcp/set-font-size))
 
 (defun kcp/decrease-font-size ()
   "Decrease current font size by a factor of `kcp/font-change-increment', down to a minimum size of 1."
   (interactive)
   (setq kcp/current-font-size
-        (max 1
-             (floor (/ kcp/current-font-size kcp/font-change-increment))))
+	(max 1
+	     (floor (/ kcp/current-font-size kcp/font-change-increment))))
   (kcp/set-font-size))
 
 (define-key global-map (kbd "C-)") 'kcp/reset-font-size)
@@ -131,6 +138,317 @@ other, future frames."
 (define-key global-map (kbd "C--") 'kcp/decrease-font-size)
 
 (kcp/reset-font-size)
+
+;; look up definitions in Webster 1913 w/ C-x w
+(defun kcp/dictionary-prompt ()
+  (read-string
+   (format "Word (%s): " (or (kcp/region-or-word) ""))
+   nil
+   nil
+   (kcp/region-or-word)))
+
+(defun kcp/dictionary-define-word ()
+  (interactive)
+  (let* ((word (kcp/dictionary-prompt))
+         (buffer-name (concat "Definition: " word)))
+    (with-output-to-temp-buffer buffer-name
+      (shell-command (format "sdcv -n %s" word) buffer-name))))
+
+(define-key global-map (kbd "C-x w") 'kcp/dictionary-define-word)
+
+;; look up words in a thesaurus w/ C-x s
+(use-package synosaurus)
+(setq-default synosaurus-backend 'synosaurus-backend-wordnet)
+(add-hook 'after-init-hook #'synosaurus-mode)
+(define-key global-map "\C-xs" 'synosaurus-lookup)
+
+;;save my location within a file
+(save-place-mode t)
+
+;;make C-w kill-region again
+(global-set-key "\C-w" 'kill-region)
+
+;; make unix lineendings default
+(setq default-buffer-file-coding-system 'utf-8-unix)
+(set-language-environment "UTF-8")
+
+;;load emacs-eshell.org file
+(org-babel-load-file "~/.emacs.d/org/remote-shell.org")
+
+;;use tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
+(setq tramp-terminal-type "dumb")
+(setq tramp-terminal-prompt-regexp "> ")
+(setq tramp-default-user "papkaleb")
+(setq tramp-default-host "papkaleb-deckard.aka.corp.amazon.com")
+
+;;set global autocomplete mode
+(ac-config-default)
+(global-auto-complete-mode t)
+
+;;set dumb terminal type to bash shell
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
+;;make tramp respect the PATH variable on the remote machine
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+;;open shell in it's own buffer not splitscreen
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+
+(defun term-switch-to-shell-mode ()
+(interactive)
+(shell-mode)
+(set-process-filter  (get-buffer-process (current-buffer)) 'comint-output-filter )
+(compilation-shell-minor-mode 1)
+(comint-send-input))
+
+;;switch to term mode with C-l
+(defun shell-switch-to-term-mode ()
+(compilation-shell-minor-mode -1)
+(font-lock-mode -1)
+(set-process-filter  (get-buffer-process (current-buffer)) 'term-emulate-terminal)
+(term-mode)
+(term-char-mode)
+(term-send-raw-string (kbd "C-l")))
+
+;; My DevDesktop has quite a few consumed environments on it.  Adding
+;; each of their "bin" directories to my tramp list.
+(add-to-list 'tramp-remote-path "/apollo/env/RemoteCommand/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/envImprovement/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/envImprovement/dotfiles/zshrc")
+;; For some reason, a few of the machines I go to have different cases for envImprovement...
+(add-to-list 'tramp-remote-path "/home/papkaleb/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/AmazonAwsCli/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/ApolloCommandLine/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/BarkCLI/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/DevDesktop/")
+(add-to-list 'tramp-remote-path "/apollo/env/DNSCMCutter/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/DNSTools/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/DNSTools_UltraDNS/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/EnvImprovement/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/OctaneBrazilTools/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/OdinTools/bin")
+(add-to-list 'tramp-remote-path "/apollo/env/SDETools/bin")
+
+
+;; I don't like my history littering many spots, and don't always have a home directory on remotes.
+(setq tramp-histfile-override "/tmp/.papkaleb_tramp_history")
+
+;;open a remote shell via tramp
+;; (defun tyrell ()
+;;       (interactive)
+;;       (let ((default-directory "/ssh:papkaleb@papkaleb-tyrell.aka.corp.amazon.com:"))
+;; 	( shell)))
+
+  ;;configure diff-hl
+  (use-package diff-hl
+    :config
+    (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+    (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
+
+  ;;require html-check frag
+  (require 'html-check-frag)
+
+;;twitter bootstrap export
+(require 'ox-twbs)
+
+;;tab to autocomplete org mode
+;;(require 'auto-complete)
+;;(add-to-list 'ac-modes 'org-mode)
+;;(ac-set-trigger-key "tab")
+(require 'org-ac)
+(org-ac/config-default)
+
+(require 'org-habit)
+
+;;have nice collapse arrows
+(setq org-ellipsis "⤵")
+
+;;org mode bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-hide-leading-stars t)
+
+;;use syntax highlighting in source blocks while editing
+(setq org-src-fontify-natively t)
+
+;;word wrap in every textmode
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
+;;make TAB act as if it were issued in a buffer of the languages major mode
+(setq org-src-tab-acts-natively t)
+
+;;autocomplete with tab in org mode
+;;(add-to-list 'ac-modes 'org-mode)
+;;(ac-set-trigger-key "TAB")
+
+;;when editing a code snippet, use current window
+(setq org-src-window-setup 'current-window)
+
+;;quickly insert a block of elisp
+(add-to-list 'org-structure-template-alist
+	     '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+
+;;keybindings
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
+
+;;exporting to PDF
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	"xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	"xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;;include =minted= package in all of my LaTeX exports
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+
+;;task and org-capture management
+(setq org-directory "~/Dropbox/orgdocs/")
+
+(defun org-file-path (filename)
+  "Return the absolute address of an org file, given its relative name."
+  (concat (file-name-as-directory org-directory) filename))
+
+;;(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
+;;(setq org-index-file (org-file-path "index.org"))
+(setq org-archive-location
+      (concat (org-file-path "archive.org") "::* From %s"))
+
+(setq org-agenda-files (list "~/Dropbox/orgdocs/amazon/work.org"
+			     "~/Dropbox/orgdocs/school/school.org"
+			     "~/Dropbox/orgdocs/home.org"
+			     "~/Dropbox/orgdocs/timelog.org"
+			     "~/Dropbox/orgdocs/taskdiary.org"
+			     "~/Dropbox/orgdocs/workjournal.org"))
+;;set TODO states
+(setq org-todo-keywords
+  '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
+
+;;store TODOs in index.org
+;;(setq org-agenda-files (list org-index-file))
+
+;;use syntax hi
+(setq org-src-fontify-natively t)
+
+;;ORG Capture stuff
+(setq org-capture-templates
+ '(
+("a" "Appointment" entry (file+headline
+"~/Dropbox/orgdocs/taskdiary.org" "Calendar")
+"* APPT %^{Description} %^g
+%?
+Added: %U")
+("n" "Notes" entry (file+datetree
+"~/Dropbox/orgdocs/taskdiary.org")
+"* %^{Description} %^g %?
+Added: %U")
+("t" "Task Diary" entry (file+datetree
+"~/Dropbox/orgdocs/taskdiary.org")
+"* TODO %^{Description}  %^g
+%?
+Added: %U")
+("j" "Journal" entry (file+datetree
+"~/Dropbox/orgdocs/workjournal.org")
+"** %^{Heading}")
+("l" "Log Time" entry (file+datetree
+"~/Dropbox/orgdocs/timelog.org" )
+"** %U - %^{Activity}  :TIME:")
+))
+
+(require 'ox-md)
+(require 'ox-beamer)
+
+(use-package gnuplot)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ruby . t)
+   (dot . t)
+   (gnuplot . t)))
+
+(setq org-confirm-babel-evaluate nil)
+
+(setq org-html-postamble nil)
+
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+
+(setq TeX-parse-self t)
+
+(setq TeX-PDF-mode t)
+
+(add-hook 'org-mode-hook
+      '(lambda ()
+         (delete '("\\.pdf\\'" . default) org-file-apps)
+         (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (LaTeX-math-mode)
+            (setq TeX-master t)))
+
+(require 'erc)
+;; (require 'tls)
+
+ (defun aws-erc-start-or-switch ()
+   "Connect to ERC, or switch to last active buffer"
+   (interactive)
+   (if (get-buffer "ircs.amazon.com:6697") ;; ERC already active?
+
+       (erc-track-switch-buffer 1) ;; yes: switch to last active
+     (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
+       (erc-tls
+        :server "ircs.amazon.com"
+        :port 6697 :nick (getenv "USER")
+        :full-name 'user-full-name
+        ))))
+
+;;load all custom el files in directory
+(defun load-directory (dir)
+  (let ((load-it (lambda (f)
+		   (load-file (concat (file-name-as-directory dir) f)))
+		 ))
+    (mapc load-it (directory-files dir nil "\\.el$"))))
+(load-directory "~/.emacs.d/custom-el-files/")
+
+;;load custom themes
+(if (file-directory-p (expand-file-name "~/.emacs.d/themes"))
+    (let ((basedir "~/.emacs.d/themes/"))
+      (dolist (f (directory-files basedir))
+        (if (and (not (or (equal f ".") (equal f "..")))
+                 (file-directory-p (concat basedir f)))
+            (add-to-list 'custom-theme-load-path (concat basedir f))))))
+
+;;save scripts as executable upon save
+(add-hook 'after-save-hook
+          #'(lambda ()
+              (and (save-excursion
+                     (save-restriction
+                       (widen)
+                       (goto-char (point-min))
+                       (save-match-data
+                         (looking-at "^#!"))))
+                   (not (file-executable-p buffer-file-name))
+                   (shell-command (concat "chmod +x " buffer-file-name))
+                   (message
+                    (concat "Saved as script: " buffer-file-name)))))
+
+;;insert templates for known file types
+(auto-insert-mode) ;;adds hook to find-files-hook
+(setq auto-insert-directory "~/.emacs.d/myemacsprogrammingtemplates/") ;;specifies template dir. Trailing\slash is important!
+(setq auto-insert-query nil) ;;don't prompt before insertion
+;;template sections
+(define-auto-insert "\\.sh\\'" "my-sh-template.sh")
 
 ;;always use ibuffer
 (defalias 'list-buffers 'ibuffer)
@@ -183,6 +501,9 @@ other, future frames."
 ;;setup files ending in .DTA to open in hexl-mode
 (add-to-list 'auto-mode-alist '("\\.DTA\\'" . hexl-mode))
 
+;;setup files ending in .template to open in jinja2-mode
+(add-to-list 'auto-mode-alist '("\\.template\\'" . jinja2-mode))
+
 ;;overwrite the selected region after marking and yanking. ie cut and paste
 (delete-selection-mode 1)
 
@@ -206,183 +527,6 @@ other, future frames."
 
 (global-set-key (kbd "C-x 2") 'kcp/split-window-below-and-switch)
 (global-set-key (kbd "C-x 3") 'kcp/split-window-right-and-switch)
-
-;; look up definitions in Webster 1913 w/ C-x w
-(defun kcp/dictionary-prompt ()
-  (read-string
-   (format "Word (%s): " (or (kcp/region-or-word) ""))
-   nil
-   nil
-   (kcp/region-or-word)))
-
-(defun kcp/dictionary-define-word ()
-  (interactive)
-  (let* ((word (kcp/dictionary-prompt))
-         (buffer-name (concat "Definition: " word)))
-    (with-output-to-temp-buffer buffer-name
-      (shell-command (format "sdcv -n %s" word) buffer-name))))
-
-(define-key global-map (kbd "C-x w") 'kcp/dictionary-define-word)
-
-;; look up words in a thesaurus w/ C-x s
-(use-package synosaurus)
-(setq-default synosaurus-backend 'synosaurus-backend-wordnet)
-(add-hook 'after-init-hook #'synosaurus-mode)
-(define-key global-map "\C-xs" 'synosaurus-lookup)
-
-;;save my location within a file
-(save-place-mode t)
-
-;;twitter bootstrap export
-(require 'ox-twbs)
-
-;;tab to autocomplete org mode
-;;(require 'auto-complete)
-;;(add-to-list 'ac-modes 'org-mode)
-;;(ac-set-trigger-key "tab")
-(require 'org-ac)
-(org-ac/config-default)
-
-;;have nice collapse arrows
-(setq org-ellipsis "⤵")
-
-;;org mode bullets
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-hide-leading-stars t)
-
-;;use syntax highlighting in source blocks while editing
-(setq org-src-fontify-natively t)
-
-;;word wrap in every textmode
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
-
-;;make TAB act as if it were issued in a buffer of the languages major mode
-;;(setq org-src-tab-acts-natively t)
-
-;;autocomplete with tab in org mode
-;;(add-to-list 'ac-modes 'org-mode)
-;;(ac-set-trigger-key "TAB")
-
-;;when editing a code snippet, use current window
-(setq org-src-window-setup 'current-window)
-
-;;quickly insert a block of elisp
-(add-to-list 'org-structure-template-alist
-             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
-	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
-
-;;keybindings
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cc" 'org-capture)
-
-;;exporting to PDF
-(setq org-latex-pdf-process
-      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
-;;include =minted= package in all of my LaTeX exports
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
-
-;;task and org-capture management
-(setq org-directory "~/Dropbox/orgdocs")
-
-(defun org-file-path (filename)
-  "Return the absolute address of an org file, given its relative name."
-  (concat (file-name-as-directory org-directory) filename))
-
-(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
-(setq org-index-file (org-file-path "index.org"))
-(setq org-archive-location
-      (concat (org-file-path "archive.org") "::* From %s"))
-
-;;set TODO states
-(setq org-todo-keywords
-  '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
-
-;;store TODOs in index.org
-(setq org-agenda-files (list org-index-file))
-
-;;use syntax hi
-(setq org-src-fontify-natively t)
-
-(require 'ox-md)
-(require 'ox-beamer)
-
-(use-package gnuplot)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (ruby . t)
-   (dot . t)
-   (gnuplot . t)))
-
-(setq org-confirm-babel-evaluate nil)
-
-(setq org-html-postamble nil)
-
-(setq org-latex-pdf-process
-      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
-
-(setq TeX-parse-self t)
-
-(setq TeX-PDF-mode t)
-
-(add-hook 'org-mode-hook
-      '(lambda ()
-         (delete '("\\.pdf\\'" . default) org-file-apps)
-         (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))))
-
-(add-hook 'LaTeX-mode-hook
-          (lambda ()
-            (LaTeX-math-mode)
-            (setq TeX-master t)))
-
-;;load all custom el files in directory
-(defun load-directory (dir)
-  (let ((load-it (lambda (f)
-		   (load-file (concat (file-name-as-directory dir) f)))
-		 ))
-    (mapc load-it (directory-files dir nil "\\.el$"))))
-(load-directory "~/.emacs.d/custom-el-files/")
-
-;;load custom themes
-(if (file-directory-p (expand-file-name "~/.emacs.d/themes"))
-    (let ((basedir "~/.emacs.d/themes/"))
-      (dolist (f (directory-files basedir))
-        (if (and (not (or (equal f ".") (equal f "..")))
-                 (file-directory-p (concat basedir f)))
-            (add-to-list 'custom-theme-load-path (concat basedir f))))))
-
-;;save scripts as executable upon save
-(add-hook 'after-save-hook
-          #'(lambda ()
-              (and (save-excursion
-                     (save-restriction
-                       (widen)
-                       (goto-char (point-min))
-                       (save-match-data
-                         (looking-at "^#!"))))
-                   (not (file-executable-p buffer-file-name))
-                   (shell-command (concat "chmod +x " buffer-file-name))
-                   (message
-                    (concat "Saved as script: " buffer-file-name)))))
-
-;;insert templates for known file types
-(auto-insert-mode) ;;adds hook to find-files-hook
-(setq auto-insert-directory "~/.emacs.d/myemacsprogrammingtemplates/") ;;specifies template dir. Trailing\slash is important!
-(setq auto-insert-query nil) ;;don't prompt before insertion
-;;template sections
-(define-auto-insert "\\.sh\\'" "my-sh-template.sh")
 
 ;;(if (not (display-graphic-p))
 ;;(setq default-frame-alist
