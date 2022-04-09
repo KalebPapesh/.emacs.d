@@ -18,19 +18,27 @@
 	 ("Leo Liu" . "sdl.web@gmail.com"))
 	(:keywords "tools" "processes" "convenience"))])
  (ada-mode .
+<<<<<<< HEAD
 	   [(7 1 4)
 	    ((uniquify-files
 	      (1 0 1))
 	     (wisi
 	      (3 1 2))
+=======
+	   [(7 2 0)
+	    ((uniquify-files
+	      (1 0 1))
+	     (wisi
+	      (3 1 5))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	     (emacs
-	      (25 0)))
+	      (25 3)))
 	    "major-mode for editing Ada sources" tar
 	    ((:url . "http://www.nongnu.org/ada-mode/")
+	     (:keywords "languages" "ada")
 	     (:maintainer "Stephen Leake" . "stephen_leake@stephe-leake.org")
 	     (:authors
-	      ("Stephen Leake" . "stephen_leake@stephe-leake.org"))
-	     (:keywords "languages" "ada"))])
+	      ("Stephen Leake" . "stephen_leake@stephe-leake.org")))])
  (ada-ref-man .
 	      [(2020 1)
 	       nil "Ada Reference Manual 2012" tar
@@ -74,17 +82,15 @@
 			  (:keywords "minibuffer" "completion")
 			  (:url . "https://elpa.gnu.org/packages/aggressive-completion.html"))])
  (aggressive-indent .
-		    [(1 8 3)
+		    [(1 10 0)
 		     ((emacs
-		       (24 1))
-		      (cl-lib
-		       (0 5)))
-		     "Minor mode to aggressively keep your code always indented" single
-		     ((:keywords "indent" "lisp" "maint" "tools")
+		       (24 3)))
+		     "Minor mode to aggressively keep your code always indented" tar
+		     ((:url . "https://github.com/Malabarba/aggressive-indent-mode")
+		      (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
 		      (:authors
 		       ("Artur Malabarba" . "emacs@endlessparentheses.com"))
-		      (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
-		      (:url . "https://github.com/Malabarba/aggressive-indent-mode"))])
+		      (:keywords "indent" "lisp" "maint" "tools"))])
  (ahungry-theme .
 		[(1 10 0)
 		 ((emacs
@@ -139,13 +145,21 @@
 	   ("John Wiegley" . "jwiegley@gmail.com"))
 	  (:keywords "async"))])
  (auctex .
+<<<<<<< HEAD
 	 [(13 0 11)
+=======
+	 [(13 1 2)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	  ((emacs
 	    (24 3)))
 	  "Integrated environment for *TeX*" tar
 	  ((:url . "https://www.gnu.org/software/auctex/")
+<<<<<<< HEAD
+=======
+	   (:keywords "tex" "latex" "texinfo" "context" "doctex" "preview-latex")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   (:maintainer nil . "auctex-devel@gnu.org")
-	   (:keywords "tex" "latex" "texinfo" "context" "doctex" "preview-latex"))])
+	   (:commit . "2568505587f0f6fb9bdac54ba59bda8503882a7a"))])
  (aumix-mode .
 	     [(7)
 	      nil "run the aumix program in a buffer" single
@@ -185,14 +199,19 @@
 	 ("Oleh Krehel" . "ohwoeowho@gmail.com"))
 	(:keywords "point" "location"))])
  (bbdb .
-       [(3 2)
+       [(3 2 2 1)
 	((emacs
 	  (24))
 	 (cl-lib
 	  (0 5)))
+<<<<<<< HEAD
 	"core of BBDB" tar
+=======
+	"Big Brother DataBase" tar
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((:maintainer "Roland Winkler" . "winkler@gnu.org")
-	 (:url . "http://elpa.gnu.org/packages/bbdb.html"))])
+	 (:url . "https://elpa.gnu.org/packages/bbdb.html")
+	 (:commit . "387bb5f216dd7c2d901af186b07d84f005c583c4"))])
  (beacon .
 	 [(1 3 3)
 	  ((seq
@@ -203,7 +222,16 @@
 	    ("Artur Malabarba" . "emacs@endlessparentheses.com"))
 	   (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
 	   (:url . "https://github.com/Malabarba/beacon"))])
+ (blist .
+	[(0 1)
+	 nil "Display bookmarks in an ibuffer way" tar
+	 ((:keywords "convenience")
+	  (:maintainer "Durand" . "mmemmew@gmail.com")
+	  (:authors
+	   ("Durand" . "mmemmew@gmail.com"))
+	  (:url . "https://elpa.gnu.org/packages/blist.html"))])
  (bluetooth .
+<<<<<<< HEAD
 	    [(0 2)
 	     ((emacs
 	       (25 1))
@@ -214,8 +242,20 @@
 	      (:authors
 	       ("Raffael Stocker" . "r.stocker@mnet-mail.de")
 	       ("Etienne Prud’homme" . "e.e.f.prudhomme@gmail.com"))
+=======
+	    [(0 3)
+	     ((emacs
+	       (25 1))
+	      (dash
+	       (2 18 1)))
+	     "A Major mode for Bluetooth devices" tar
+	     ((:url . "https://gitlab.com/rstocker/emacs-bluetooth")
+	      (:keywords "hardware")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	      (:maintainer "Raffael Stocker" . "r.stocker@mnet-mail.de")
-	      (:url . "https://gitlab.com/rstocker/emacs-bluetooth"))])
+	      (:authors
+	       ("Raffael Stocker" . "r.stocker@mnet-mail.de")
+	       ("Etienne Prud’homme" . "e.e.f.prudhomme@gmail.com")))])
  (bnf-mode .
 	   [(0 4 5)
 	    ((cl-lib
@@ -228,6 +268,31 @@
 	     (:authors
 	      ("Serghei Iakovlev" . "egrep@protonmail.ch"))
 	     (:keywords "languages"))])
+ (boxy .
+       [(1 0 5)
+	((emacs
+	  (26 1)))
+	"A boxy layout framework" tar
+	((:url . "https://gitlab.com/tygrdev/boxy.el")
+	 (:keywords "tools")
+	 (:maintainer "Tyler Grinn" . "tylergrinn@gmail.com")
+	 (:authors
+	  ("Tyler Grinn" . "tylergrinn@gmail.com"))
+	 (:commit . "3a949d5b14349f33f27bc5041178445a0fedcc6c"))])
+ (boxy-headings .
+		[(2 1 2)
+		 ((emacs
+		   (26 1))
+		  (boxy
+		   (1 0))
+		  (org
+		   (9 3)))
+		 "View org files in a boxy diagram" tar
+		 ((:url . "https://gitlab.com/tygrdev/boxy-headings")
+		  (:keywords "tools")
+		  (:maintainer "Tyler Grinn" . "tylergrinn@gmail.com")
+		  (:authors
+		   ("Tyler Grinn" . "tylergrinn@gmail.com")))])
  (brief .
 	[(5 87)
 	 nil "Brief Editor Emulator (Brief Mode)" tar
@@ -236,6 +301,17 @@
 	   ("Luke Lee" . "luke.yx.lee@gmail.com"))
 	  (:keywords "brief" "emulations" "crisp")
 	  (:url . "http://elpa.gnu.org/packages/brief.html"))])
+ (buffer-env .
+	     [(0 3)
+	      ((emacs
+		(27 1)))
+	      "Buffer-local process environments" tar
+	      ((:url . "https://github.com/astoff/buffer-env")
+	       (:keywords "processes" "tools")
+	       (:maintainer "Augusto Stoffel" . "arstoffel@gmail.com")
+	       (:authors
+		("Augusto Stoffel" . "arstoffel@gmail.com"))
+	       (:commit . "ba1c9d24d3f1ba58445cbf1f762ba6859b66f6bf"))])
  (buffer-expose .
 		[(0 4 3)
 		 ((emacs
@@ -260,6 +336,28 @@
 	       (:authors
 		("Artur Malabarba" . "emacs@endlessparentheses.com"))
 	       (:keywords "lisp"))])
+<<<<<<< HEAD
+=======
+ (cape .
+       [(0 7)
+	((emacs
+	  (27 1)))
+	"Completion At Point Extensions" tar
+	((:url . "https://github.com/minad/cape")
+	 (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
+	 (:authors
+	  ("Daniel Mendler" . "mail@daniel-mendler.de"))
+	 (:commit . "51b9bf1276445faebfbad636d9b6a39dc57b22bc"))])
+ (capf-autosuggest .
+		   [(0 3)
+		    ((emacs
+		      (25 1)))
+		    "History autosuggestions for comint and eshell" tar
+		    ((:url . "https://repo.or.cz/emacs-capf-autosuggest.git")
+		     (:maintainer "jakanakaevangeli" . "jakanakaevangeli@chiru.no")
+		     (:authors
+		      ("jakanakaevangeli" . "jakanakaevangeli@chiru.no")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (caps-lock .
 	    [(1 0)
 	     nil "Caps-lock as a minor mode" single
@@ -328,6 +426,17 @@
 	       (:authors
 		("Edward Hart" . "edward.dan.hart@gmail.com"))
 	       (:maintainer "Edward Hart" . "edward.dan.hart@gmail.com"))])
+ (code-cells .
+	     [(0 2)
+	      ((emacs
+		(27 1)))
+	      "Lightweight notebooks with support for ipynb files" tar
+	      ((:url . "https://github.com/astoff/code-cells.el")
+	       (:keywords "convenience" "outlines")
+	       (:maintainer "Augusto Stoffel" . "arstoffel@gmail.com")
+	       (:authors
+		("Augusto Stoffel" . "arstoffel@gmail.com"))
+	       (:commit . "ea7799c447066fee78c4efbafbdaf09520c7109d"))])
  (coffee-mode .
 	      [(0 4 1 1)
 	       nil "Major mode for CoffeeScript files" single
@@ -336,6 +445,17 @@
 		 ("Chris Wanstrath" . "chris@ozmm.org"))
 		(:maintainer "Chris Wanstrath" . "chris@ozmm.org")
 		(:url . "http://github.com/defunkt/coffee-mode"))])
+ (comint-mime .
+	      [(0 1)
+	       ((emacs
+		 (28 1)))
+	       "Display content of various MIME types in comint buffers" tar
+	       ((:url . "https://github.com/astoff/comint-mime")
+		(:keywords "processes" "multimedia")
+		(:maintainer "Augusto Stoffel" . "arstoffel@gmail.com")
+		(:authors
+		 ("Augusto Stoffel" . "arstoffel@gmail.com"))
+		(:commit . "2ac67834d9bb8e6a3521d75b934a4b496a3a0f9d"))])
  (compact-docstrings .
 		     [(0 2)
 		      nil "Shrink blank lines in docstrings and doc comments" single
@@ -389,6 +509,29 @@
 		       (:authors
 			("Ingo Lohmar" . "i.lohmar@gmail.com"))
 		       (:keywords "abbrev" "convenience" "matching"))])
+ (compat .
+	 [(28 1 0 3)
+	  ((emacs
+	    (24 3))
+	   (nadvice
+	    (0 3)))
+	  "Compatibility Library" tar
+	  ((:url . "https://sr.ht/~pkal/compat")
+	   (:keywords "lisp")
+	   (:maintainer "Compat Development" . "~pkal/compat-devel@lists.sr.ht")
+	   (:authors
+	    ("Philip Kaludercic" . "philipk@posteo.net"))
+	   (:commit . "7a97ee1860e15ff9657d94dc15d03bc5e47d1773"))])
+ (consult .
+	  [(0 16)
+	   ((emacs
+	     (26 1)))
+	   "Consulting completing-read" tar
+	   ((:url . "https://github.com/minad/consult")
+	    (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
+	    (:authors
+	     ("Daniel Mendler and Consult contributors"))
+	    (:commit . "800824601b610016066991d6e2dde198d4b0ad8f"))])
  (context-coloring .
 		   [(8 1 0)
 		    ((emacs
@@ -400,14 +543,34 @@
 		      ("Jackson Ray Hamilton" . "jackson@jacksonrayhamilton.com"))
 		     (:keywords "convenience" "faces" "tools"))])
  (corfu .
+<<<<<<< HEAD
 	[(0 6)
+=======
+	[(0 21)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 ((emacs
 	   (27 1)))
 	 "Completion Overlay Region FUnction" tar
 	 ((:url . "https://github.com/minad/corfu")
 	  (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
 	  (:authors
+<<<<<<< HEAD
 	   ("Daniel Mendler" . "mail@daniel-mendler.de")))])
+=======
+	   ("Daniel Mendler" . "mail@daniel-mendler.de"))
+	  (:commit . "ba099c770dd6d410553473604f184adf20d7b359"))])
+ (coterm .
+	 [(1 5)
+	  ((emacs
+	    (26 1)))
+	  "Terminal emulation for comint" tar
+	  ((:url . "https://repo.or.cz/emacs-coterm.git")
+	   (:keywords "processes")
+	   (:maintainer "jakanakaevangeli" . "jakanakaevangeli@chiru.no")
+	   (:authors
+	    ("jakanakaevangeli" . "jakanakaevangeli@chiru.no"))
+	   (:commit . "ef4b5fb55304266244c87d2c6aaefab58149da62"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (counsel .
 	  [(0 13 4)
 	   ((emacs
@@ -432,6 +595,17 @@
 	       ("Douglas Lewan" . "d.lewan2000@gmail.com"))
 	      (:keywords "files")
 	      (:url . "http://elpa.gnu.org/packages/cpio-mode.html"))])
+<<<<<<< HEAD
+=======
+ (crdt .
+       [(0 2 7)
+	nil "Collaborative editing using Conflict-free Replicated Data Types" tar
+	((:url . "https://code.librehq.com/qhong/crdt.el")
+	 (:keywords "collaboration" "crdt")
+	 (:maintainer "Qiantan Hong" . "qhong@alum.mit.edu")
+	 (:authors
+	  ("Qiantan Hong" . "qhong@alum.mit.edu")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (crisp .
 	[(1 3 6)
 	 nil "CRiSP/Brief Emacs emulator" single
@@ -440,18 +614,41 @@
 	  (:authors
 	   ("Gary D. Foster" . "Gary.Foster@Corp.Sun.COM"))
 	  (:maintainer "Luke Lee" . "luke.yx.lee@gmail.com"))])
+ (csharp-mode .
+	      [(1 1 1)
+	       ((emacs
+		 (26 1)))
+	       "C# mode derived mode" tar
+	       ((:url . "https://github.com/emacs-csharp/csharp-mode")
+		(:keywords "c#" "languages" "oop" "mode")
+		(:maintainer "Jostein Kjønigsen" . "jostein@gmail.com")
+		(:authors
+		 ("Theodor Thornhill" . "theo@thornhill.no")))])
  (csv-mode .
+<<<<<<< HEAD
 	   [(1 15)
+=======
+	   [(1 19)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	    ((emacs
 	      (24 1))
 	     (cl-lib
 	      (0 5)))
 	    "Major mode for editing comma/char separated values" tar
+<<<<<<< HEAD
 	    ((:maintainer nil . "emacs-devel@gnu.org")
 	     (:authors
 	      ("\"Francis J. Wright\"" . "F.J.Wright@qmul.ac.uk"))
 	     (:keywords "convenience")
 	     (:url . "https://elpa.gnu.org/packages/csv-mode.html"))])
+=======
+	    ((:keywords "convenience")
+	     (:maintainer nil . "emacs-devel@gnu.org")
+	     (:authors
+	      ("\"Francis J. Wright\"" . "F.J.Wright@qmul.ac.uk"))
+	     (:url . "https://elpa.gnu.org/packages/csv-mode.html")
+	     (:commit . "5c19624398bfd6b976cc9876db582e3e23611601"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (cycle-quotes .
 	       [(0 1)
 		nil "Cycle between quote styles" tar
@@ -471,7 +668,11 @@
 	      ("João Távora" . "joaotavora@gmail.com"))
 	     (:maintainer "João Távora" . "joaotavora@gmail.com"))])
  (dash .
+<<<<<<< HEAD
        [(2 18 1)
+=======
+       [(2 19 1)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((emacs
 	  (24)))
 	"A modern list library for Emacs" tar
@@ -491,17 +692,27 @@
 		  ("Daiki Ueno" . "ueno@gnu.org"))
 		 (:maintainer nil . "emacs-devel@gnu.org"))])
  (debbugs .
+<<<<<<< HEAD
 	  [(0 28)
+=======
+	  [(0 32)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   ((emacs
-	     (25 1))
+	     (26 1))
 	    (soap-client
 	     (3 1 5)))
 	   "SOAP library to access debbugs servers" tar
-	   ((:maintainer "Michael Albinus" . "michael.albinus@gmx.de")
+	   ((:keywords "comm" "hypermedia")
+	    (:maintainer "Michael Albinus" . "michael.albinus@gmx.de")
 	    (:authors
 	     ("Michael Albinus" . "michael.albinus@gmx.de"))
+<<<<<<< HEAD
 	    (:keywords "comm" "hypermedia")
 	    (:url . "https://elpa.gnu.org/packages/debbugs.html"))])
+=======
+	    (:url . "https://elpa.gnu.org/packages/debbugs.html")
+	    (:commit . "a35646a9798226b8630fbd7a0691edc78ccd92b3"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (delight .
 	  [(1 7)
 	   ((cl-lib
@@ -514,6 +725,17 @@
 	     ("Phil Sainty" . "psainty@orcon.net.nz"))
 	    (:maintainer "Phil Sainty" . "psainty@orcon.net.nz")
 	    (:url . "https://savannah.nongnu.org/projects/delight"))])
+ (devdocs .
+	  [(0 4)
+	   ((emacs
+	     (27 1)))
+	   "Emacs viewer for DevDocs" tar
+	   ((:url . "https://github.com/astoff/devdocs.el")
+	    (:keywords "help")
+	    (:maintainer "Augusto Stoffel" . "arstoffel@gmail.com")
+	    (:authors
+	     ("Augusto Stoffel" . "arstoffel@gmail.com"))
+	    (:commit . "cdc1a7cc3f05235883ffb098fe1c5a8963ed06e2"))])
  (dict-tree .
 	    [(0 16)
 	     ((trie
@@ -548,6 +770,17 @@
 	      ("Mitchel Humpherys" . "mitch.special@gmail.com"))
 	     (:maintainer "Mitchel Humpherys" . "mitch.special@gmail.com")
 	     (:url . "https://github.com/mgalgs/diffview-mode"))])
+ (diminish .
+	   [(0 46)
+	    ((emacs
+	      (24 3)))
+	    "Diminished modes are minor modes with no modeline display" tar
+	    ((:url . "https://github.com/myrjola/diminish.el")
+	     (:keywords "extensions" "diminish" "minor" "codeprose")
+	     (:maintainer "Martin Yrjölä" . "martin.yrjola@gmail.com")
+	     (:authors
+	      ("Will Mengarini" . "seldon@eskimo.com"))
+	     (:commit . "66b3902401059d161424b1b8d0abc3cb0a7d6df0"))])
  (dired-du .
 	   [(0 5 2)
 	    ((emacs
@@ -581,15 +814,17 @@
 	       (:maintainer "Pierre Neidhardt" . "mail@ambrevar.xyz")
 	       (:url . "https://gitlab.com/Ambrevar/emacs-disk-usage"))])
  (dismal .
-	 [(1 5)
+	 [(1 5 2)
 	  ((cl-lib
-	    (0)))
+	    (0))
+	   (emacs
+	    (24 3)))
 	  "Dis Mode Ain't Lotus: Spreadsheet program Emacs" tar
 	  ((:maintainer "UnMaintainer" . "emacs-devel@gnu.org")
 	   (:authors
 	    (nil . "David Fox, fox@cs.nyu.edu")
 	    (nil . "Frank E. Ritter, ritter@cs.cmu.edu"))
-	   (:url . "http://elpa.gnu.org/packages/dismal.html"))])
+	   (:url . "https://elpa.gnu.org/packages/dismal.html"))])
  (djvu .
        [(1 1 1)
 	nil "Edit and view Djvu files via djvused" single
@@ -606,7 +841,19 @@
 	    (:authors
 	     ("Chong Yidong" . "cyd@gnu.org"))
 	    (:maintainer "Chong Yidong" . "cyd@gnu.org"))])
+ (dtache .
+	 [(0 5)
+	  ((emacs
+	    (27 1)))
+	  "Run and interact with detached shell commands" tar
+	  ((:url . "https://www.gitlab.com/niklaseklund/dtache.git")
+	   (:keywords "convenience" "processes")
+	   (:maintainer "Niklas Eklund" . "niklas.eklund@posteo.net")
+	   (:authors
+	    ("Niklas Eklund" . "niklas.eklund@posteo.net"))
+	   (:commit . "ecf4c57d96eda400d9b2d5cfeaa9244993ae3603"))])
  (dts-mode .
+<<<<<<< HEAD
 	   [(0 1 1)
 	    nil "Major mode for Device Tree source files" tar
 	    ((:maintainer "Ben Gamari" . "ben@smart-cactus.org")
@@ -614,6 +861,26 @@
 	      ("Ben Gamari" . "ben@smart-cactus.org"))
 	     (:keywords "languages")
 	     (:url . "https://elpa.gnu.org/packages/dts-mode.html"))])
+=======
+	   [(1 0)
+	    ((emacs
+	      (24)))
+	    "Major mode for Device Tree source files" tar
+	    ((:keywords "languages")
+	     (:maintainer "Ben Gamari" . "ben@smart-cactus.org")
+	     (:authors
+	      ("Ben Gamari" . "ben@smart-cactus.org"))
+	     (:url . "https://elpa.gnu.org/packages/dts-mode.html")
+	     (:commit . "8413d2dc9b3347831aa9e8c8b2524af3ef005441"))])
+ (easy-escape .
+	      [(0 2 1)
+	       nil "Improve readability of escape characters in regular expressions" tar
+	       ((:url . "https://github.com/cpitclaudel/easy-escape")
+		(:keywords "convenience" "lisp" "tools")
+		(:maintainer "Clément Pit-Claudel" . "clement.pitclaudel@live.com")
+		(:authors
+		 ("Clément Pit-Claudel" . "clement.pitclaudel@live.com")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (easy-kill .
 	    [(0 9 4)
 	     ((emacs
@@ -627,19 +894,22 @@
 	       ("Leo Liu" . "sdl.web@gmail.com"))
 	      (:keywords "killing" "convenience"))])
  (ebdb .
+<<<<<<< HEAD
        [(0 6 22)
+=======
+       [(0 8 14)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((emacs
 	  (25 1))
-	 (cl-lib
-	  (0 5))
 	 (seq
 	  (2 15)))
 	"Contact management package" tar
 	((:url . "https://github.com/girzel/ebdb")
+	 (:keywords "convenience" "mail")
 	 (:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net")
 	 (:authors
 	  ("Eric Abrahamsen" . "eric@ericabrahamsen.net"))
-	 (:keywords "convenience" "mail"))])
+	 (:commit . "c98512ebb6984701bbf090f1eabedb120c51e7bd"))])
  (ebdb-gnorb .
 	     [(1 0 2)
 	      ((gnorb
@@ -671,17 +941,26 @@
 	      (:maintainer "Markus Triska" . "triska@metalevel.at")
 	      (:url . "https://www.metalevel.at/ediprolog/"))])
  (eev .
+<<<<<<< HEAD
       [(20210102)
+=======
+      [(20220324)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
        ((emacs
 	 (24 4)))
        "Support for e-scripts (eepitch blocks, elisp hyperlinks, etc)" tar
        ((:url . "http://angg.twu.net/#eev")
+	(:keywords "lisp" "e-scripts")
 	(:maintainer "Eduardo Ochs" . "eduardoochs@gmail.com")
 	(:authors
 	 ("Eduardo Ochs" . "eduardoochs@gmail.com"))
-	(:keywords "lisp" "e-scripts"))])
+	(:commit . "515e876c5a0f7003cca272de616a60e3160eace6"))])
  (eglot .
+<<<<<<< HEAD
 	[(1 7)
+=======
+	[(1 8)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 ((emacs
 	   (26 1))
 	  (jsonrpc
@@ -696,10 +975,11 @@
 	   (1 11 0)))
 	 "Client for Language Server Protocol (LSP) servers" tar
 	 ((:url . "https://github.com/joaotavora/eglot")
+	  (:keywords "convenience" "languages")
 	  (:maintainer "João Távora" . "joaotavora@gmail.com")
 	  (:authors
 	   ("João Távora" . "joaotavora@gmail.com"))
-	  (:keywords "convenience" "languages"))])
+	  (:commit . "132ea08f97f94ad2e050fc8d1628ecb41de7229a"))])
  (el-search .
 	    [(1 12 6 1)
 	     ((emacs
@@ -715,6 +995,7 @@
 	      (:keywords "lisp")
 	      (:url . "http://elpa.gnu.org/packages/el-search.html"))])
  (eldoc .
+<<<<<<< HEAD
 	[(1 11 0)
 	 ((emacs
 	   (26 3)))
@@ -724,13 +1005,26 @@
 	  (:authors
 	   ("Noah Friedman" . "friedman@splode.com"))
 	  (:maintainer "Noah Friedman" . "friedman@splode.com"))])
+=======
+	[(1 11 1)
+	 ((emacs
+	   (26 3)))
+	 "Show function arglist or variable docstring in echo area" tar
+	 ((:keywords "extensions")
+	  (:maintainer "Noah Friedman" . "friedman@splode.com")
+	  (:authors
+	   ("Noah Friedman" . "friedman@splode.com"))
+	  (:url . "https://elpa.gnu.org/packages/eldoc.html")
+	  (:commit . "45978f97be89ae989ecf9e7129b88592e70a1f24"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (eldoc-eval .
-	     [(0 1)
-	      nil "Enable eldoc support when minibuffer is in use." single
-	      ((:url . "http://elpa.gnu.org/packages/eldoc-eval.html")
+	     [(0 2)
+	      nil "Enable eldoc support when minibuffer is in use." tar
+	      ((:maintainer "Thierry Volpiatto" . "thievol@posteo.net")
 	       (:authors
-		("Thierry Volpiatto" . "thierry.volpiatto@gmail.com"))
-	       (:maintainer "Thierry Volpiatto" . "thierry.volpiatto@gmail.com"))])
+		("Thierry Volpiatto" . "thievol@posteo.net"))
+	       (:url . "https://elpa.gnu.org/packages/eldoc-eval.html")
+	       (:commit . "e91800503c90cb75dc70abe42f1d6ae499346cc1"))])
  (electric-spacing .
 		   [(5 0)
 		    nil "Insert operators with surrounding spaces smartly" single
@@ -739,6 +1033,7 @@
 		      ("William Xu" . "william.xwl@gmail.com"))
 		     (:maintainer "William Xu" . "william.xwl@gmail.com"))])
  (elisp-benchmarks .
+<<<<<<< HEAD
 		   [(1 11)
 		    nil "elisp benchmarks collection" tar
 		    ((:maintainer "Andrea Corallo" . "akrl@sdf.org")
@@ -750,14 +1045,74 @@
        [(7 1)
 	((cl-lib
 	  (0 5))
+=======
+		   [(1 14)
+		    nil "elisp benchmarks collection" tar
+		    ((:keywords "languages" "lisp")
+		     (:maintainer "Andrea Corallo" . "akrl@sdf.org")
+		     (:authors
+		      ("Andrea Corallo" . "akrl@sdf.org"))
+		     (:url . "https://elpa.gnu.org/packages/elisp-benchmarks.html")
+		     (:commit . "70e38dbfa8f4acbdebfd0f417410d99f5031e05f"))])
+ (embark .
+	 [(0 16)
+	  ((emacs
+	    (26 1)))
+	  "Conveniently act on minibuffer completions" tar
+	  ((:url . "https://github.com/oantolin/embark")
+	   (:keywords "convenience")
+	   (:maintainer "Omar Antolín Camarena" . "omar@matem.unam.mx")
+	   (:authors
+	    ("Omar Antolín Camarena" . "omar@matem.unam.mx"))
+	   (:commit . "5faf1389162dd64bfe3511dfb8f52c18efb5140b"))])
+ (embark-consult .
+		 [(0 5)
+		  ((emacs
+		    (26 1))
+		   (embark
+		    (0 12))
+		   (consult
+		    (0 10)))
+		  "Consult integration for Embark" tar
+		  ((:url . "https://github.com/oantolin/embark")
+		   (:keywords "convenience")
+		   (:maintainer "Omar Antolín Camarena" . "omar@matem.unam.mx")
+		   (:authors
+		    ("Omar Antolín Camarena" . "omar@matem.unam.mx"))
+		   (:commit . "5faf1389162dd64bfe3511dfb8f52c18efb5140b"))])
+ (emms .
+       [(10)
+	((cl-lib
+	  (0 5))
+	 (nadvice
+	  (0 3))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 (seq
 	  (0)))
 	"The Emacs Multimedia System" tar
 	((:url . "https://www.gnu.org/software/emms/")
+<<<<<<< HEAD
 	 (:maintainer "Yoni Rabkin" . "yrk@gnu.org")
 	 (:authors
 	  ("Jorgen Schäfer" . "forcer@forcix.cx"))
 	 (:keywords "emms" "mp3" "ogg" "flac" "music" "mpeg" "video" "multimedia"))])
+=======
+	 (:keywords "emms" "mp3" "ogg" "flac" "music" "mpeg" "video" "multimedia")
+	 (:maintainer "Yoni Rabkin" . "yrk@gnu.org")
+	 (:authors
+	  ("Jorgen Schäfer" . "forcer@forcix.cx"))
+	 (:commit . "6afe1b26d679357586380ecd69c9795985231013"))])
+ (engrave-faces .
+		[(0 2 0)
+		 ((emacs
+		   (27 1)))
+		 "Convert font-lock faces to other formats" tar
+		 ((:url . "https://github.com/tecosaur/engrave-faces")
+		  (:maintainer "TEC" . "tec@tecosaur.com")
+		  (:authors
+		   ("TEC <https://github/tecosaur>"))
+		  (:keywords "faces"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (enwc .
        [(2 0)
 	((emacs
@@ -776,6 +1131,16 @@
 	       (:authors
 		("Ted Zlatanov" . "tzz@lifelogs.com"))
 	       (:maintainer "Ted Zlatanov" . "tzz@lifelogs.com"))])
+ (erc .
+      [(5 4 1)
+       ((emacs
+	 (27 1)))
+       "An Emacs Internet Relay Chat client" tar
+       ((:url . "https://www.gnu.org/software/emacs/erc.html")
+	(:keywords "irc" "chat" "client" "internet")
+	(:maintainer "Amin Bandali" . "bandali@gnu.org")
+	(:authors
+	 ("Alexander L. Belikoff" . "alexander@belikoff.net")))])
  (ergoemacs-mode .
 		 [(5 16 10 12)
 		  ((emacs
@@ -793,7 +1158,11 @@
 		    ("Matthew L. Fidler" . "matthew.fidler@gmail.com"))
 		   (:keywords "convenience"))])
  (excorporate .
+<<<<<<< HEAD
 	      [(0 9 6)
+=======
+	      [(1 0 0)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	       ((emacs
 		 (24 1))
 		(cl-lib
@@ -821,15 +1190,19 @@
 		   ("Magnar Sveen" . "magnars@gmail.com"))
 		  (:keywords "marking" "region"))])
  (exwm .
+<<<<<<< HEAD
        [(0 24)
+=======
+       [(0 26)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((xelb
 	  (0 18)))
 	"Emacs X Window Manager" tar
 	((:url . "https://github.com/ch11ng/exwm")
-	 (:maintainer "Chris Feng" . "chris.w.feng@gmail.com")
+	 (:keywords "unix")
+	 (:maintainer "Adrián Medraño Calvo" . "adrian@medranocalvo.com")
 	 (:authors
-	  ("Chris Feng" . "chris.w.feng@gmail.com"))
-	 (:keywords "unix"))])
+	  ("Chris Feng" . "chris.w.feng@gmail.com")))])
  (f90-interface-browser .
 			[(1 1)
 			 nil "Parse and browse f90 interfaces" single
@@ -858,6 +1231,7 @@
 	     ("Barry O'Reilly" . "gundaetiapo@gmail.com"))
 	    (:maintainer "Barry O'Reilly" . "gundaetiapo@gmail.com"))])
  (flymake .
+<<<<<<< HEAD
 	  [(1 1 1)
 	   ((emacs
 	     (26 1))
@@ -869,6 +1243,32 @@
 	     ("Pavel Kobyakov" . "pk_at_work@yahoo.com"))
 	    (:keywords "c" "languages" "tools")
 	    (:url . "https://elpa.gnu.org/packages/flymake.html"))])
+=======
+	  [(1 2 2)
+	   ((emacs
+	     (26 1))
+	    (eldoc
+	     (1 1 0))
+	    (project
+	     (0 7 1)))
+	   "A universal on-the-fly syntax checker" tar
+	   ((:keywords "c" "languages" "tools")
+	    (:maintainer "João Távora" . "joaotavora@gmail.com")
+	    (:authors
+	     ("Pavel Kobyakov" . "pk_at_work@yahoo.com"))
+	    (:url . "https://elpa.gnu.org/packages/flymake.html")
+	    (:commit . "31af9bca99fa88350271e1a905c9b435eaec28cf"))])
+ (flymake-proselint .
+		    [(0 2 3)
+		     ((emacs
+		       (26 1)))
+		     "Flymake backend for proselint" tar
+		     ((:url . "https://github.com/manuel-uberti/flymake-proselint")
+		      (:keywords "convenience")
+		      (:maintainer "Manuel Uberti" . "manuel.uberti@inventati.org")
+		      (:authors
+		       ("Manuel Uberti" . "manuel.uberti@inventati.org")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (frame-tabs .
 	     [(1 1)
 	      nil "show buffer tabs in side window" single
@@ -903,6 +1303,19 @@
 	(:authors
 	 ("Magnus Henoch" . "magnus.henoch@gmail.com"))
 	(:maintainer "Thomas Fitzsimmons" . "fitzsim@fitzsim.org"))])
+<<<<<<< HEAD
+=======
+ (ftable .
+	 [(1 0)
+	  ((emacs
+	    (26 0)))
+	  "Fill a table to fit in n columns" tar
+	  ((:url . "https://github.com/casouri/ftable")
+	   (:maintainer "Yuan Fu" . "casouri@gmail.com")
+	   (:authors
+	    ("Yuan Fu" . "casouri@gmail.com"))
+	   (:keywords "convenience" "text" "table"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (gcmh .
        [(0 2 1)
 	((emacs
@@ -953,15 +1366,24 @@
 		  (:keywords "gnome" "c" "coding style")
 		  (:url . "http://elpa.gnu.org/packages/gnome-c-style.html"))])
  (gnorb .
+<<<<<<< HEAD
 	[(1 6 9)
+=======
+	[(1 6 10)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 ((cl-lib
 	   (0 5)))
 	 "Glue code between Gnus, Org, and BBDB" tar
-	 ((:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net")
+	 ((:keywords "mail" "org" "gnus" "bbdb" "todo" "task")
+	  (:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net")
 	  (:authors
 	   ("Eric Abrahamsen" . "eric@ericabrahamsen.net"))
+<<<<<<< HEAD
 	  (:keywords "mail" "org" "gnus" "bbdb" "todo" "task")
 	  (:url . "http://elpa.gnu.org/packages/gnorb.html"))])
+=======
+	  (:url . "https://elpa.gnu.org/packages/gnorb.html"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (gnu-elpa .
 	   [(1 1)
 	    nil "Advertize GNU ELPA packages" tar
@@ -978,7 +1400,11 @@
 			    (:keywords "maint" "tools")
 			    (:url . "http://elpa.gnu.org/packages/gnu-elpa-keyring-update.html"))])
  (gnugo .
+<<<<<<< HEAD
 	[(3 1 1)
+=======
+	[(3 1 2)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 ((ascii-art-to-unicode
 	   (1 5))
 	  (xpm
@@ -986,11 +1412,11 @@
 	  (cl-lib
 	   (0 5)))
 	 "play GNU Go in a buffer" tar
-	 ((:url . "http://www.gnuvola.org/software/gnugo/")
+	 ((:url . "https://www.gnuvola.org/software/gnugo/")
+	  (:keywords "games" "processes")
 	  (:maintainer "Thien-Thi Nguyen" . "ttn@gnu.org")
 	  (:authors
-	   ("Thien-Thi Nguyen" . "ttn@gnu.org"))
-	  (:keywords "games" "processes"))])
+	   ("Thien-Thi Nguyen" . "ttn@gnu.org")))])
  (gnus-mock .
 	    [(0 5)
 	     nil "Mock Gnus installation for testing" tar
@@ -1097,24 +1523,55 @@
  (hyperbole .
 	    [(7 1 3)
 	     ((emacs
-	       (24 4)))
+	       (27 1)))
 	     "GNU Hyperbole: The Everyday Hypertextual Information Manager" tar
 	     ((:url . "http://www.gnu.org/software/hyperbole")
 	      (:maintainer "Bob Weiner <rsw@gnu.org>, Mats Lidell" . "matsl@gnu.org")
 	      (:authors
 	       ("Bob Weiner"))
 	      (:keywords "comm" "convenience" "files" "frames" "hypermedia" "languages" "mail" "matching" "mouse" "multimedia" "outlines" "tools" "wp"))])
+ (ilist .
+	[(0 1)
+	 nil "Display a list in an ibuffer way." tar
+	 ((:keywords "convenience")
+	  (:maintainer "Durand" . "mmemmew@gmail.com")
+	  (:authors
+	   ("Durand" . "mmemmew@gmail.com"))
+	  (:url . "https://elpa.gnu.org/packages/ilist.html"))])
  (ioccur .
+<<<<<<< HEAD
 	 [(2 4)
+=======
+	 [(2 6)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	  ((emacs
 	    (24))
 	   (cl-lib
 	    (0 5)))
+<<<<<<< HEAD
 	  "Incremental occur" single
 	  ((:authors
 	    ("Thierry Volpiatto" . "thierry.volpiatto@gmail.com"))
 	   (:maintainer "Thierry Volpiatto" . "thierry.volpiatto@gmail.com")
 	   (:url . "https://github.com/thierryvolpiatto/ioccur"))])
+=======
+	  "Incremental occur" tar
+	  ((:url . "https://github.com/thierryvolpiatto/ioccur")
+	   (:maintainer "Thierry Volpiatto" . "thievol@posteo.net")
+	   (:authors
+	    ("Thierry Volpiatto" . "thievol@posteo.net")))])
+ (isearch-mb .
+	     [(0 5)
+	      ((emacs
+		(27 1)))
+	      "Control isearch from the minibuffer" tar
+	      ((:url . "https://github.com/astoff/isearch-mb")
+	       (:keywords "matching")
+	       (:maintainer "Augusto Stoffel" . "arstoffel@gmail.com")
+	       (:authors
+		("Augusto Stoffel" . "arstoffel@gmail.com"))
+	       (:commit . "e70ba8f594afef989006493dd71bd693a29e9f42"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (iterators .
 	    [(0 1 1)
 	     ((emacs
@@ -1176,7 +1633,11 @@
 	       ("Oleh Krehel" . "ohwoeowho@gmail.com"))
 	      (:keywords "convenience"))])
  (ivy-posframe .
+<<<<<<< HEAD
 	       [(0 6 0)
+=======
+	       [(0 6 3)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		((emacs
 		  (26 0))
 		 (posframe
@@ -1185,19 +1646,27 @@
 		  (0 13 0)))
 		"Using posframe to show Ivy" tar
 		((:url . "https://github.com/tumashu/ivy-posframe")
+<<<<<<< HEAD
 		 (:maintainer "Feng Shu" . "tumashu@163.com")
 		 (:authors
 		  ("Feng Shu" . "tumashu@163.com")
 		  ("Naoya Yamashita" . "conao3@gmail.com"))
 		 (:keywords "abbrev" "convenience" "matching" "ivy"))])
+=======
+		 (:keywords "abbrev" "convenience" "matching" "ivy")
+		 (:maintainer "Feng Shu" . "tumashu@163.com")
+		 (:authors
+		  ("Feng Shu" . "tumashu@163.com")
+		  ("Naoya Yamashita" . "conao3@gmail.com")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (javaimp .
-	  [(0 7 1)
+	  [(0 8)
 	   nil "Add and reorder Java import statements in Maven/Gradle projects" tar
-	   ((:maintainer "Filipp Gunbin" . "fgunbin@fastmail.fm")
+	   ((:keywords "java" "maven" "gradle" "programming")
+	    (:maintainer "Filipp Gunbin" . "fgunbin@fastmail.fm")
 	    (:authors
 	     ("Filipp Gunbin" . "fgunbin@fastmail.fm"))
-	    (:keywords "java" "maven" "gradle" "programming")
-	    (:url . "http://elpa.gnu.org/packages/javaimp.html"))])
+	    (:url . "https://elpa.gnu.org/packages/javaimp.html"))])
  (jgraph-mode .
 	      [(1 1)
 	       ((cl-lib
@@ -1209,19 +1678,23 @@
 		 ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 		(:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (js2-mode .
+<<<<<<< HEAD
 	   [(20201220)
+=======
+	   [(20211229)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	    ((emacs
 	      (24 1))
 	     (cl-lib
 	      (0 5)))
 	    "Improved JavaScript editing mode" tar
 	    ((:url . "https://github.com/mooz/js2-mode/")
+	     (:keywords "languages" "javascript")
 	     (:maintainer "Steve Yegge" . "steve.yegge@gmail.com")
 	     (:authors
 	      ("Steve Yegge" . "steve.yegge@gmail.com")
 	      ("mooz" . "stillpedant@gmail.com")
-	      ("Dmitry Gutov" . "dgutov@yandex.ru"))
-	     (:keywords "languages" "javascript"))])
+	      ("Dmitry Gutov" . "dgutov@yandex.ru")))])
  (json-mode .
 	    [(0 2)
 	     ((emacs
@@ -1233,15 +1706,20 @@
 	       ("Simen Heggestøyl" . "simenheg@gmail.com"))
 	      (:maintainer "Simen Heggestøyl" . "simenheg@gmail.com"))])
  (jsonrpc .
+<<<<<<< HEAD
 	  [(1 0 14)
+=======
+	  [(1 0 15)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   ((emacs
 	     (25 2)))
-	   "JSON-RPC library" single
-	   ((:url . "http://elpa.gnu.org/packages/jsonrpc.html")
-	    (:keywords "processes" "languages" "extensions")
+	   "JSON-RPC library" tar
+	   ((:keywords "processes" "languages" "extensions")
+	    (:maintainer "João Távora" . "joaotavora@gmail.com")
 	    (:authors
 	     ("João Távora" . "joaotavora@gmail.com"))
-	    (:maintainer "João Távora" . "joaotavora@gmail.com"))])
+	    (:url . "https://elpa.gnu.org/packages/jsonrpc.html")
+	    (:commit . "50654cf0b1bf6210fc8f46d8e7ae13bbeeccecb5"))])
  (jumpc .
 	[(3 0)
 	 nil "jump to previous insertion points" single
@@ -1249,18 +1727,45 @@
 	  (:authors
 	   ("Ivan Kanis" . "ivan@kanis.fr"))
 	  (:maintainer "Ivan Kanis" . "ivan@kanis.fr"))])
+<<<<<<< HEAD
  (kiwix .
 	[(1 0 3)
 	 ((emacs
 	   (24 4))
+=======
+ (kind-icon .
+	    [(0 1 5)
+	     ((emacs
+	       (27 1))
+	      (svg-lib
+	       (0)))
+	     "Completion kind icons" tar
+	     ((:url . "https://github.com/jdtsmith/kind-icon")
+	      (:keywords "completion")
+	      (:maintainer "J.D. Smith" . "jdtsmith@gmail.com")
+	      (:authors
+	       ("J.D. Smith" . "jdtsmith@gmail.com"))
+	      (:commit . "235c3d20d1e667d6ac73e11d55a380e070b7cacf"))])
+ (kiwix .
+	[(1 1 5)
+	 ((emacs
+	   (25 1))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	  (request
 	   (0 3 0)))
 	 "Searching offline Wikipedia through Kiwix." tar
 	 ((:url . "https://github.com/stardiviner/kiwix.el")
+<<<<<<< HEAD
 	  (:maintainer "stardiviner" . "numbchild@gmail.com")
 	  (:authors
 	   ("stardiviner" . "numbchild@gmail.com"))
 	  (:keywords "kiwix" "wikipedia"))])
+=======
+	  (:keywords "kiwix" "wikipedia")
+	  (:maintainer "stardiviner" . "numbchild@gmail.com")
+	  (:authors
+	   ("stardiviner" . "numbchild@gmail.com")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (kmb .
       [(0 1)
        ((emacs
@@ -1280,15 +1785,27 @@
 	      ("Terrence Brannon" . "metaperl@gmail.com"))
 	     (:maintainer nil . "emacs-devel@gnu.org"))])
  (leaf .
+<<<<<<< HEAD
        [(4 4 4)
+=======
+       [(4 5 5)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((emacs
 	  (24 1)))
 	"Simplify your init.el configuration, extended use-package" tar
 	((:url . "https://github.com/conao3/leaf.el")
+<<<<<<< HEAD
 	 (:maintainer "Naoya Yamashita" . "conao3@gmail.com")
 	 (:authors
 	  ("Naoya Yamashita" . "conao3@gmail.com"))
 	 (:keywords "lisp" "settings"))])
+=======
+	 (:keywords "lisp" "settings")
+	 (:maintainer "Naoya Yamashita" . "conao3@gmail.com")
+	 (:authors
+	  ("Naoya Yamashita" . "conao3@gmail.com"))
+	 (:commit . "7cc38f9739eadc569b1179fabe7f7893167105da"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (let-alist .
    [(1 0 6)
     ((emacs
@@ -1306,6 +1823,17 @@
 	(:authors
 	 ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 	(:url . "http://elpa.gnu.org/packages/lex.html"))])
+ (lin .
+      [(0 3 0)
+       ((emacs
+	 (27 1)))
+       "Make `hl-line-mode' more suitable for selection UIs" tar
+       ((:url . "https://git.sr.ht/~protesilaos/lin")
+	(:keywords "convenience" "faces" "theme")
+	(:maintainer "Protesilaos Stavrou" . "info@protesilaos.com")
+	(:authors
+	 ("Protesilaos Stavrou" . "info@protesilaos.com"))
+	(:commit . "edc29c2afe98ecd120108b7d3561aff938cc22c3"))])
  (lmc .
       [(1 4)
        ((emacs
@@ -1350,7 +1878,19 @@
 	    ("Alexey Veretennikov" . "alexey.veretennikov@gmail.com"))
 	   (:maintainer "Alexey Veretennikov" . "alexey.veretennikov@gmail.com")
 	   (:url . "https://github.com/fourier/loccur"))])
+ (logos .
+	[(0 3 1)
+	 ((emacs
+	   (27 1)))
+	 "Simple focus mode and extras" tar
+	 ((:url . "https://git.sr.ht/~protesilaos/logos")
+	  (:keywords "convenience" "focus" "writing" "presentation" "narrowing")
+	  (:maintainer "Protesilaos Stavrou" . "info@protesilaos.com")
+	  (:authors
+	   ("Protesilaos Stavrou" . "info@protesilaos.com"))
+	  (:commit . "9e6824b8fa67c6c96e46eeb410cbca2f88193a2d"))])
  (map .
+<<<<<<< HEAD
       [(3 0)
        ((emacs
 	 (26)))
@@ -1360,6 +1900,28 @@
 	 ("Nicolas Petton" . "nicolas@petton.fr"))
 	(:keywords "extensions" "lisp")
 	(:url . "https://elpa.gnu.org/packages/map.html"))])
+=======
+      [(3 2 1)
+       ((emacs
+	 (26)))
+       "Map manipulation functions" tar
+       ((:keywords "extensions" "lisp")
+	(:maintainer nil . "emacs-devel@gnu.org")
+	(:authors
+	 ("Nicolas Petton" . "nicolas@petton.fr"))
+	(:url . "https://elpa.gnu.org/packages/map.html")
+	(:commit . "fa92b040c6738de7278605cadeace0c5380a0814"))])
+ (marginalia .
+	     [(0 13)
+	      ((emacs
+		(26 1)))
+	      "Enrich existing commands with completion annotations" tar
+	      ((:url . "https://github.com/minad/marginalia")
+	       (:maintainer "Omar Antolín Camarena <omar@matem.unam.mx>, Daniel Mendler" . "mail@daniel-mendler.de")
+	       (:authors
+		("Omar Antolín Camarena <omar@matem.unam.mx>, Daniel Mendler" . "mail@daniel-mendler.de"))
+	       (:commit . "bd98c02720bc59a5c185c293f60595d06dfd7637"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (markchars .
 	    [(0 2 2)
 	     nil "Mark chars fitting certain characteristics" single
@@ -1375,6 +1937,16 @@
 		       ("Vitalie Spinu" . "spinuvit@gmail.com"))
 		      (:maintainer "Vitalie Spinu" . "spinuvit@gmail.com")
 		      (:url . "https://github.com/vspinu/math-symbol-lists"))])
+ (mct .
+      [(0 5 0)
+       ((emacs
+	 (27 1)))
+       "Minibuffer and Completions in Tandem" tar
+       ((:url . "https://gitlab.com/protesilaos/mct")
+	(:maintainer "Protesilaos Stavrou" . "info@protesilaos.com")
+	(:authors
+	 ("Protesilaos Stavrou" . "info@protesilaos.com"))
+	(:commit . "680d7727216ed05ba58e7d2f04a046d1f27cf3e9"))])
  (memory-usage .
 	       [(0 2)
 		nil "Analyze the memory usage of Emacs in various ways" single
@@ -1452,6 +2024,7 @@
 			  ("Protesilaos Stavrou" . "info@protesilaos.com"))
 			 (:keywords "faces" "theme" "accessibility"))])
  (modus-themes .
+<<<<<<< HEAD
 	       [(1 3 2)
 		((emacs
 		  (26 1)))
@@ -1461,6 +2034,18 @@
 		 (:authors
 		  ("Protesilaos Stavrou" . "info@protesilaos.com"))
 		 (:keywords "faces" "theme" "accessibility"))])
+=======
+	       [(2 3 0)
+		((emacs
+		  (27 1)))
+		"Elegant, highly legible and customizable themes" tar
+		((:url . "https://gitlab.com/protesilaos/modus-themes")
+		 (:keywords "faces" "theme" "accessibility")
+		 (:maintainer "Protesilaos Stavrou" . "info@protesilaos.com")
+		 (:authors
+		  ("Protesilaos Stavrou" . "info@protesilaos.com"))
+		 (:commit . "7b08e3a8e41db1483322f48305f837e705540249"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (modus-vivendi-theme .
 		      [(0 13 2)
 		       ((emacs
@@ -1473,6 +2058,17 @@
 			(:authors
 			 ("Protesilaos Stavrou" . "info@protesilaos.com"))
 			(:keywords "faces" "theme" "accessibility"))])
+<<<<<<< HEAD
+=======
+ (multi-mode .
+	     [(1 14)
+	      nil "support for multiple major modes" tar
+	      ((:url . "http://www.loveshack.ukfsn.org/emacs")
+	       (:keywords "languages" "extensions" "files")
+	       (:maintainer "Dave Love" . "fx@gnu.org")
+	       (:authors
+		("Dave Love" . "fx@gnu.org")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (multishell .
 	     [(1 1 9)
 	      ((cl-lib
@@ -1532,6 +2128,32 @@
 	  (:authors
 	   ("Artur Malabarba" . "emacs@endlessparentheses.com"))
 	  (:keywords "extensions" "lisp"))])
+ (nano-agenda .
+	      [(0 2 1)
+	       ((emacs
+		 (27 1)))
+	       "N Λ N O agenda" tar
+	       ((:url . "https://github.com/rougier/nano-agenda")
+		(:keywords "convenience" "org-mode" "org-agenda")
+		(:maintainer "Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr"))])
+ (nano-modeline .
+		[(0 6)
+		 ((emacs
+		   (27 1)))
+		 "N Λ N O modeline" tar
+		 ((:url . "https://github.com/rougier/nano-modeline")
+		  (:keywords "convenience" "mode-line" "header-line")
+		  (:maintainer "Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr")
+		  (:commit . "1c743a9dbe72a1bdc2196ad43a217060e163c929"))])
+ (nano-theme .
+	     [(0 3 0)
+	      ((emacs
+		(27 1)))
+	      "N Λ N O theme" tar
+	      ((:url . "https://github.com/rougier/nano-theme")
+	       (:keywords "theme" "dark" "light")
+	       (:maintainer "Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr")
+	       (:commit . "11362f22ba631d84ae300fd3c4bd6db128ba5960"))])
  (nhexl-mode .
 	     [(1 5)
 	      ((emacs
@@ -1624,16 +2246,35 @@
 	       ("Michael Heerdegen" . "michael_heerdegen@web.de"))
 	      (:maintainer "Michael Heerdegen" . "michael_heerdegen@web.de")
 	      (:url . "https://github.com/michael-heerdegen/on-screen.el"))])
+ (orderless .
+	    [(0 7)
+	     ((emacs
+	       (26 1)))
+	     "Completion style for matching regexps in any order" tar
+	     ((:url . "https://github.com/oantolin/orderless")
+	      (:keywords "extensions")
+	      (:maintainer "Omar Antolín Camarena" . "omar@matem.unam.mx")
+	      (:authors
+	       ("Omar Antolín Camarena" . "omar@matem.unam.mx"))
+	      (:commit . "92008e762b30cb445a2227e458cbb9a5e1b1d4e8"))])
  (org .
+<<<<<<< HEAD
       [(9 4 5)
        ((emacs
 	 (24 3)))
        "Outline-based notes management and organizer" tar
        ((:url . "https://orgmode.org")
+=======
+      [(9 5 2)
+       ((emacs
+	 (25 1)))
+       "Outline-based notes management and organizer" tar
+       ((:url . "https://orgmode.org")
+	(:keywords "outlines" "hypermedia" "calendar" "wp")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	(:maintainer "Bastien Guerry" . "bzg@gnu.org")
 	(:authors
-	 ("Carsten Dominik <carsten at orgmode dot org>"))
-	(:keywords "outlines" "hypermedia" "calendar" "wp"))])
+	 ("Carsten Dominik" . "carsten.dominik@gmail.com")))])
  (org-edna .
 	   [(1 1 2)
 	    ((emacs
@@ -1648,6 +2289,7 @@
 	     (:authors
 	      ("Ian Dunn" . "dunni@gnu.org"))
 	     (:keywords "convenience" "text" "org"))])
+<<<<<<< HEAD
  (org-translate .
 		[(0 1 3)
 		 ((emacs
@@ -1659,6 +2301,70 @@
 		  (:authors
 		   ("Eric Abrahamsen" . "eric@ericabrahamsen.net"))
 		  (:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net"))])
+=======
+ (org-modern .
+	     [(0 3)
+	      ((emacs
+		(27 1)))
+	      "Modern looks for Org" tar
+	      ((:url . "https://github.com/minad/org-modern")
+	       (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
+	       (:authors
+		("Daniel Mendler" . "mail@daniel-mendler.de"))
+	       (:commit . "64fa67a3e4cc7af4084bb879bd8a0e5380333bcf"))])
+ (org-real .
+	   [(1 0 4)
+	    ((emacs
+	      (26 1))
+	     (boxy
+	      (1 0))
+	     (org
+	      (9 3)))
+	    "Keep track of real things as org-mode links" tar
+	    ((:url . "https://gitlab.com/tygrdev/org-real")
+	     (:keywords "tools")
+	     (:maintainer "Tyler Grinn" . "tylergrinn@gmail.com")
+	     (:authors
+	      ("Tyler Grinn" . "tylergrinn@gmail.com")))])
+ (org-remark .
+	     [(1 0 4)
+	      ((emacs
+		(27 1))
+	       (org
+		(9 4)))
+	      "Highlight & annotate any text files" tar
+	      ((:url . "https://github.com/nobiot/org-remark")
+	       (:keywords "org-mode" "annotation" "writing" "note-taking" "marginal-notes")
+	       (:maintainer "Noboru Ota" . "me@nobiot.com")
+	       (:authors
+		("Noboru Ota" . "me@nobiot.com"))
+	       (:commit . "e78cdff25edffc74bfe4c65f3a02777d454f6d96"))])
+ (org-transclusion .
+		   [(1 2 0)
+		    ((emacs
+		      (27 1))
+		     (org
+		      (9 4)))
+		    "Transclude text content via links" tar
+		    ((:url . "https://github.com/nobiot/org-transclusion")
+		     (:keywords "org-mode" "transclusion" "writing")
+		     (:maintainer "Noboru Ota" . "me@nobiot.com")
+		     (:authors
+		      ("Noboru Ota" . "me@nobiot.com"))
+		     (:commit . "2d44c56fb666da2dbb6c988389a21bee5bdd406c"))])
+ (org-translate .
+		[(0 1 4)
+		 ((emacs
+		   (27 1))
+		  (org
+		   (9 1)))
+		 "Org-based translation environment" tar
+		 ((:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net")
+		  (:authors
+		   ("Eric Abrahamsen" . "eric@ericabrahamsen.net"))
+		  (:url . "https://elpa.gnu.org/packages/org-translate.html")
+		  (:commit . "bdc5d169ef0c502f46aa673918ccf34fcc8415f2"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (orgalist .
 	   [(1 13)
 	    ((emacs
@@ -1673,10 +2379,27 @@
       [(0 4)
        nil "Open Sound Control protocol library" tar
        ((:maintainer "Mario Lang" . "mlang@blind.guru")
+<<<<<<< HEAD
 	(:authors
 	 ("Mario Lang" . "mlang@blind.guru"))
 	(:keywords "comm" "processes" "multimedia")
 	(:url . "https://elpa.gnu.org/packages/osc.html"))])
+=======
+	(:authors
+	 ("Mario Lang" . "mlang@blind.guru"))
+	(:keywords "comm" "processes" "multimedia")
+	(:url . "https://elpa.gnu.org/packages/osc.html"))])
+ (osm .
+      [(0 6)
+       ((emacs
+	 (27 1)))
+       "OpenStreetMap viewer" tar
+       ((:url . "https://github.com/minad/osm")
+	(:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
+	(:authors
+	 ("Daniel Mendler" . "mail@daniel-mendler.de"))
+	(:commit . "f76decfd0e94d5fc030a1d5c3230c213c87b47ef"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (other-frame-window .
 		     [(1 0 6)
 		      ((emacs
@@ -1718,6 +2441,17 @@
 	   (:authors
 	    ("Junpeng Qiu" . "qjpchmail@gmail.com"))
 	   (:keywords "extensions"))])
+ (parser-generator .
+		   [(0 1 5)
+		    ((emacs
+		      (26)))
+		    "Parser Generator library" tar
+		    ((:url . "https://github.com/cjohansson/emacs-parser-generator")
+		     (:keywords "tools" "convenience")
+		     (:maintainer "Christian Johansson" . "christian@cvj.se")
+		     (:authors
+		      ("Christian Johansson" . "christian@cvj.se"))
+		     (:commit . "bf7229332f7040d49fdac56e54da13d73752395d"))])
  (path-iterator .
 		[(1 0)
 		 ((emacs
@@ -1744,15 +2478,20 @@
 	     ("Phillip Lord" . "phillip.lord@russet.org.uk"))
 	    (:url . "http://elpa.gnu.org/packages/persist.html"))])
  (phps-mode .
+<<<<<<< HEAD
 	    [(0 4 3)
+=======
+	    [(0 4 20)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	     ((emacs
 	       (26)))
-	     "Major mode for PHP with Semantic integration" tar
+	     "Major mode for PHP with code intelligence" tar
 	     ((:url . "https://github.com/cjohansson/emacs-phps-mode")
+	      (:keywords "tools" "convenience")
 	      (:maintainer "Christian Johansson" . "christian@cvj.se")
 	      (:authors
 	       ("Christian Johansson" . "christian@cvj.se"))
-	      (:keywords "tools" "convenience"))])
+	      (:commit . "3a09d15aa143b175235674f4cd45f92b0b0a6c36"))])
  (pinentry .
 	   [(0 1)
 	    nil "GnuPG Pinentry server implementation" single
@@ -1770,6 +2509,7 @@
 	   ("Mario Lang" . "mlang@delysid.org"))
 	  (:maintainer "Mario Lang" . "mlang@delysid.org"))])
  (posframe .
+<<<<<<< HEAD
 	   [(1 0 2)
 	    ((emacs
 	      (26)))
@@ -1781,12 +2521,31 @@
 	     (:keywords "convenience" "tooltip"))])
  (project .
 	  [(0 6 0)
+=======
+	   [(1 1 7)
+	    ((emacs
+	      (26 1)))
+	    "Pop a posframe (just a frame) at point" tar
+	    ((:url . "https://github.com/tumashu/posframe")
+	     (:keywords "convenience" "tooltip")
+	     (:maintainer "Feng Shu" . "tumashu@163.com")
+	     (:authors
+	      ("Feng Shu" . "tumashu@163.com"))
+	     (:commit . "c91d4d53fa479ceb604071008ce0a901770eff57"))])
+ (project .
+	  [(0 8 1)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   ((emacs
 	     (26 1))
 	    (xref
 	     (1 0 2)))
 	   "Operations on the current project" tar
+<<<<<<< HEAD
 	   ((:url . "https://elpa.gnu.org/packages/project.html"))])
+=======
+	   ((:url . "https://elpa.gnu.org/packages/project.html")
+	    (:commit . "6bf29072e968401f842789c71468e624e5c913a9"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (psgml .
 	[(1 3 4)
 	 nil "SGML-editing mode with parsing support" tar
@@ -1804,21 +2563,49 @@
 	      (:authors
 	       ("Scott Andrew Borton" . "scott@pp.htv.fi"))
 	      (:maintainer "John Darrington" . "john@darrington.wattle.id.au"))])
+<<<<<<< HEAD
  (pyim .
        [(3 7 2)
 	((emacs
 	  (24 4))
+=======
+ (pulsar .
+	 [(0 3 0)
+	  ((emacs
+	    (27 1)))
+	  "Pulse highlight on demand or after select functions" tar
+	  ((:url . "https://git.sr.ht/~protesilaos/pulsar")
+	   (:keywords "convenience" "pulse" "highlight")
+	   (:maintainer "Protesilaos Stavrou" . "info@protesilaos.com")
+	   (:authors
+	    ("Protesilaos Stavrou" . "info@protesilaos.com"))
+	   (:commit . "cdb7892a2b7e8e7cc644b8e24e5ab6bf0c51584d"))])
+ (pyim .
+       [(4 1 0)
+	((emacs
+	  (25 1))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 (async
 	  (1 6))
 	 (xr
 	  (1 13)))
+<<<<<<< HEAD
 	"A Chinese input method support quanpin, shuangpin, wubi and cangjie." tar
 	((:url . "https://github.com/tumashu/pyim")
+=======
+	"A Chinese input method support quanpin, shuangpin, wubi, cangjie and rime." tar
+	((:url . "https://github.com/tumashu/pyim")
+	 (:keywords "convenience" "chinese" "pinyin" "input-method")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 (:maintainer "Feng Shu" . "tumashu@163.com")
 	 (:authors
 	  ("Ye Wenbin" . "wenbinye@163.com")
 	  ("Feng Shu" . "tumashu@163.com"))
+<<<<<<< HEAD
 	 (:keywords "convenience" "chinese" "pinyin" "input-method"))])
+=======
+	 (:commit . "75ead11eeaaf801e342bb18d7c0ff93ed1c123ff"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (pyim-basedict .
 		[(0 5 0)
 		 nil "The default pinyin dict of pyim" tar
@@ -1828,17 +2615,24 @@
 		   ("Feng Shu" . "tumashu@163.com"))
 		  (:keywords "convenience" "chinese" "pinyin" "input-method" "complete"))])
  (python .
+<<<<<<< HEAD
 	 [(0 27 1)
 	  ((emacs
 	    (24 2))
+=======
+	 [(0 28)
+	  ((emacs
+	    (24 4))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   (cl-lib
 	    (1 0)))
-	  "Python's flying circus support for Emacs" single
-	  ((:keywords "languages")
+	  "Python's flying circus support for Emacs" tar
+	  ((:url . "https://github.com/fgallina/python.el")
+	   (:keywords "languages")
+	   (:maintainer nil . "emacs-devel@gnu.org")
 	   (:authors
 	    ("Fabián E. Gallina" . "fgallina@gnu.org"))
-	   (:maintainer nil . "emacs-devel@gnu.org")
-	   (:url . "https://github.com/fgallina/python.el"))])
+	   (:commit . "b3d0f53b296a0876ec7a55ae840868e65ed54e14"))])
  (quarter-plane .
 		[(0 1)
 		 nil "Minor mode for quarter-plane style editing" single
@@ -1993,14 +2787,23 @@
 		      (:authors
 		       ("Rocky Bernstein" . "rocky@gnu.org")))])
  (rec-mode .
+<<<<<<< HEAD
 	   [(1 8 1)
+=======
+	   [(1 8 3)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	    ((emacs
 	      (25)))
 	    "Major mode for viewing/editing rec files" tar
 	    ((:url . "https://www.gnu.org/software/recutils/")
 	     (:maintainer "Antoine Kalmbach" . "ane@iki.fi")
 	     (:authors
+<<<<<<< HEAD
 	      ("Jose E. Marchesi" . "jemarch@gnu.org")))])
+=======
+	      ("Jose E. Marchesi" . "jemarch@gnu.org"))
+	     (:commit . "24adb19f70f682f28d6edac03598b1fee971d599"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (register-list .
 		[(0 1)
 		 nil "Interactively list/edit registers" single
@@ -2010,16 +2813,24 @@
 		   ("Bastien Guerry" . "bzg@gnu.org"))
 		  (:maintainer "Bastien Guerry" . "bzg@gnu.org"))])
  (relint .
+<<<<<<< HEAD
 	 [(1 19)
 	  ((xr
 	    (1 20))
+=======
+	 [(1 20)
+	  ((xr
+	    (1 22))
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   (emacs
 	    (26 1)))
 	  "Elisp regexp mistake finder" tar
 	  ((:url . "https://github.com/mattiase/relint")
+	   (:keywords "lisp" "regexps")
 	   (:maintainer "Mattias Engdegård" . "mattiase@acm.org")
 	   (:authors
 	    ("Mattias Engdegård" . "mattiase@acm.org"))
+<<<<<<< HEAD
 	   (:keywords "lisp" "regexps"))])
  (repology .
 	   [(1 1 0)
@@ -2031,6 +2842,20 @@
 	      ("Nicolas Goaziou" . "mail@nicolasgoaziou.fr"))
 	     (:keywords "web")
 	     (:url . "https://elpa.gnu.org/packages/repology.html"))])
+=======
+	   (:commit . "5a918af0c99ab83355d4ec73a2fb39e70c173956"))])
+ (repology .
+	   [(1 2 3)
+	    ((emacs
+	      (26 1)))
+	    "Repology API access via Elisp" tar
+	    ((:keywords "web")
+	     (:maintainer "Nicolas Goaziou" . "mail@nicolasgoaziou.fr")
+	     (:authors
+	      ("Nicolas Goaziou" . "mail@nicolasgoaziou.fr"))
+	     (:url . "https://elpa.gnu.org/packages/repology.html")
+	     (:commit . "b5829003decbdbe9002e7e1d29f45989a4659927"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (rich-minority .
 		[(1 0 3)
 		 ((cl-lib
@@ -2050,6 +2875,7 @@
 	      ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 	     (:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (rt-liberation .
+<<<<<<< HEAD
 		[(2 3)
 		 nil "Emacs interface to RT" tar
 		 ((:url . "http://www.nongnu.org/rtliber/")
@@ -2057,6 +2883,16 @@
 		  (:authors
 		   ("Yoni Rabkin" . "yrk@gnu.org"))
 		  (:keywords "rt" "tickets"))])
+=======
+		[(4)
+		 nil "Emacs interface to RT" tar
+		 ((:url . "http://www.nongnu.org/rtliber/")
+		  (:keywords "rt" "tickets")
+		  (:maintainer "Yoni Rabkin" . "yrk@gnu.org")
+		  (:authors
+		   ("Yoni Rabkin" . "yrk@gnu.org"))
+		  (:commit . "f9dbe356479c10c32a8f420e4f3d2c7a99edf9ce"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (rudel .
 	[(0 3 2)
 	 ((emacs
@@ -2073,6 +2909,22 @@
 	  (:authors
 	   ("Jan Moringen" . "scymtym@users.sourceforge.net"))
 	  (:keywords "rudel" "collaboration"))])
+<<<<<<< HEAD
+=======
+ (satchel .
+	  [(0 2)
+	   ((emacs
+	     (27 2))
+	    (project
+	     (0 8 1)))
+	   "A bag for your files, separated by git branches" tar
+	   ((:keywords "tools" "languages")
+	    (:maintainer "Theodor Thornhill" . "theo@thornhill.no")
+	    (:authors
+	     ("Theodor Thornhill" . "theo@thornhill.no"))
+	    (:url . "https://elpa.gnu.org/packages/satchel.html")
+	    (:commit . "6e5613e203f6937202cb5d55249e7e6be939067b"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (scanner .
 	  [(0 2)
 	   ((emacs
@@ -2101,11 +2953,17 @@
 	      ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 	     (:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (seq .
+<<<<<<< HEAD
       [(2 22)
+=======
+      [(2 23)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
        nil "Sequence manipulation functions" tar
-       ((:maintainer nil . "emacs-devel@gnu.org")
+       ((:keywords "sequences")
+	(:maintainer nil . "emacs-devel@gnu.org")
 	(:authors
 	 ("Nicolas Petton" . "nicolas@petton.fr"))
+<<<<<<< HEAD
 	(:keywords "sequences")
 	(:url . "http://elpa.gnu.org/packages/seq.html"))])
  (setup .
@@ -2118,13 +2976,27 @@
 	  (:authors
 	   ("Philip K." . "philipk@posteo.net"))
 	  (:keywords "lisp" "local"))])
+=======
+	(:url . "https://elpa.gnu.org/packages/seq.html"))])
+ (setup .
+	[(1 2 0)
+	 ((emacs
+	   (26 1)))
+	 "Helpful Configuration Macro" tar
+	 ((:url . "https://git.sr.ht/~pkal/setup")
+	  (:keywords "lisp" "local")
+	  (:maintainer "Philip Kaludercic" . "philipk@posteo.net")
+	  (:authors
+	   ("Philip Kaludercic" . "philipk@posteo.net")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (shelisp .
-	  [(0 9 1)
-	   nil "execute elisp in shell" single
-	   ((:url . "http://elpa.gnu.org/packages/shelisp.html")
-	    (:keywords "terminals" "lisp" "processes")
+	  [(1 0 0)
+	   nil "execute elisp in shell" tar
+	   ((:keywords "terminals" "lisp" "processes")
+	    (:maintainer "Michael R. Mauger" . "michael@mauger.com")
 	    (:authors
 	     ("Michael R. Mauger" . "michael@mauger.com"))
+<<<<<<< HEAD
 	    (:maintainer "Michael R. Mauger" . "michael@mauger.com"))])
  (shell-command+ .
 		 [(2 1 0)
@@ -2136,6 +3008,19 @@
 		   (:authors
 		    ("Philip K." . "philipk@posteo.net"))
 		   (:keywords "unix" "processes" "convenience"))])
+=======
+	    (:url . "https://elpa.gnu.org/packages/shelisp.html"))])
+ (shell-command+ .
+		 [(2 3 2)
+		  ((emacs
+		    (24 1)))
+		  "An extended shell-command" tar
+		  ((:url . "https://git.sr.ht/~pkal/shell-command-plus")
+		   (:keywords "unix" "processes" "convenience")
+		   (:maintainer "Philip Kaludercic" . "philipk@posteo.net")
+		   (:authors
+		    ("Philip Kaludercic" . "philipk@posteo.net")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (shen-mode .
 	    [(0 1)
 	     nil "A major mode for editing shen source code" tar
@@ -2152,8 +3037,21 @@
 	       ("Ralph Amissah & Ambrose Kofi Laing"))
 	      (:maintainer "Ralph Amissah" . "ralph.amissah@gmail.com")
 	      (:url . "http://www.sisudoc.org/"))])
+<<<<<<< HEAD
  (slime-volleyball .
 		   [(1 1 7)
+=======
+ (sketch-mode .
+	      [(1 0 4)
+	       nil "Quickly create svg sketches using keyboard and mouse" tar
+	       ((:url . "https://github.com/dalanicolai/sketch-mode")
+		(:keywords "multimedia")
+		(:maintainer "D.L. Nicolai" . "dalanicolai@gmail.com")
+		(:authors
+		 ("D.L. Nicolai" . "dalanicolai@gmail.com")))])
+ (slime-volleyball .
+		   [(1 2 0)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		    ((cl-lib
 		      (0 5)))
 		    "An SVG Slime Volleyball Game" tar
@@ -2161,7 +3059,11 @@
 		     (:authors
 		      ("Thomas Fitzsimmons" . "fitzsim@fitzsim.org"))
 		     (:keywords "games")
+<<<<<<< HEAD
 		     (:url . "http://elpa.gnu.org/packages/slime-volleyball.html"))])
+=======
+		     (:url . "https://elpa.gnu.org/packages/slime-volleyball.html"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (sm-c-mode .
 	    [(1 1)
 	     nil "C major mode based on SMIE" single
@@ -2205,6 +3107,7 @@
 	      ("	(Stefan Monnier)" . "monnier@iro.umontreal.ca"))
 	     (:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (so-long .
+<<<<<<< HEAD
 	  [(1 0)
 	   ((emacs
 	     (24 4)))
@@ -2217,13 +3120,31 @@
  (soap-client .
 	      [(3 2 0)
 	       ((cl-lib
+=======
+	  [(1 1 2)
+	   ((emacs
+	     (24 4)))
+	   "Say farewell to performance problems with minified code." tar
+	   ((:url . "https://savannah.nongnu.org/projects/so-long")
+	    (:keywords "convenience")
+	    (:maintainer "Phil Sainty" . "psainty@orcon.net.nz")
+	    (:authors
+	     ("Phil Sainty" . "psainty@orcon.net.nz"))
+	    (:commit . "045a4fe94c18cd36ef297e62a80cdff449af3aa5"))])
+ (soap-client .
+	      [(3 2 1)
+	       ((emacs
+		 (24 1))
+		(cl-lib
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		 (0 6 1)))
 	       "Access SOAP web services" tar
 	       ((:url . "https://github.com/alex-hhh/emacs-soap-client")
+		(:keywords "soap" "web-services" "comm" "hypermedia")
 		(:maintainer "Alexandru Harsanyi" . "AlexHarsanyi@gmail.com")
 		(:authors
 		 ("Alexandru Harsanyi" . "AlexHarsanyi@gmail.com"))
-		(:keywords "soap" "web-services" "comm" "hypermedia"))])
+		(:commit . "37eef19fd608ca81acb40f974b8d7bbe7fc27127"))])
  (sokoban .
 	  [(1 4 8)
 	   ((emacs
@@ -2247,11 +3168,15 @@
 	    (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
 	    (:url . "https://github.com/Malabarba/speed-of-thought-lisp"))])
  (spinner .
-	  [(1 7 3)
-	   nil "Add spinners and progress-bars to the mode-line for ongoing operations" single
-	   ((:keywords "processes" "mode-line")
+	  [(1 7 4)
+	   ((emacs
+	     (24 3)))
+	   "Add spinners and progress-bars to the mode-line for ongoing operations" tar
+	   ((:url . "https://github.com/Malabarba/spinner.el")
+	    (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
 	    (:authors
 	     ("Artur Malabarba" . "emacs@endlessparentheses.com"))
+<<<<<<< HEAD
 	    (:maintainer "Artur Malabarba" . "emacs@endlessparentheses.com")
 	    (:url . "https://github.com/Malabarba/spinner.el"))])
  (sql-beeline .
@@ -2264,6 +3189,19 @@
 		(:maintainer "Filipp Gunbin" . "fgunbin@fastmail.fm"))])
  (sql-indent .
 	     [(1 5)
+=======
+	    (:keywords "processes" "mode-line"))])
+ (sql-beeline .
+	      [(0 1)
+	       nil "Beeline support for sql.el" tar
+	       ((:keywords "sql" "hive" "beeline" "hiveserver2")
+		(:maintainer "Filipp Gunbin" . "fgunbin@fastmail.fm")
+		(:authors
+		 ("Filipp Gunbin" . "fgunbin@fastmail.fm"))
+		(:url . "https://elpa.gnu.org/packages/sql-beeline.html"))])
+ (sql-indent .
+	     [(1 6)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	      ((cl-lib
 		(0 5)))
 	      "Support for indenting code in SQL files." tar
@@ -2273,7 +3211,11 @@
 		("Alex Harsanyi" . "AlexHarsanyi@gmail.com"))
 	       (:keywords "languages" "sql"))])
  (ssh-deploy .
+<<<<<<< HEAD
 	     [(3 1 12)
+=======
+	     [(3 1 13)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	      ((emacs
 		(25)))
 	      "Deployment via Tramp, global or per directory." tar
@@ -2315,6 +3257,30 @@
 	      (:authors
 	       ("Ulf Jasper" . "ulf.jasper@web.de"))
 	      (:maintainer "Ulf Jasper" . "ulf.jasper@web.de"))])
+<<<<<<< HEAD
+=======
+ (svg-lib .
+	  [(0 2 5)
+	   ((emacs
+	     (27 1)))
+	   "SVG tags, progress bars & icons" tar
+	   ((:url . "https://github.com/rougier/svg-lib")
+	    (:keywords "svg" "icons" "tags" "convenience")
+	    (:maintainer "Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr")
+	    (:commit . "0486c9453449771bc3f5872f70bc5cb23580d0f4"))])
+ (svg-tag-mode .
+	       [(0 3 2)
+		((emacs
+		  (27 1))
+		 (svg-lib
+		  (0 2)))
+		"Replace keywords with SVG tags" tar
+		((:url . "https://github.com/rougier/svg-tag-mode")
+		 (:keywords "convenience")
+		 (:maintainer "Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr")
+		 (:authors
+		  ("Nicolas P. Rougier" . "Nicolas.Rougier@inria.fr")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (swiper .
 	 [(0 13 4)
 	  ((emacs
@@ -2346,6 +3312,30 @@
 	  ("Toby Cubitt" . "toby-predictive@dr-qubit.org"))
 	 (:maintainer "Toby Cubitt" . "toby-predictive@dr-qubit.org")
 	 (:url . "http://www.dr-qubit.org/emacs.php"))])
+ (taxy .
+       [(0 9)
+	((emacs
+	  (26 3)))
+	"Programmable taxonomical grouping for arbitrary objects" tar
+	((:url . "https://github.com/alphapapa/taxy.el")
+	 (:keywords "lisp")
+	 (:maintainer "Adam Porter" . "adam@alphapapa.net")
+	 (:authors
+	  ("Adam Porter" . "adam@alphapapa.net"))
+	 (:commit . "b209692b632bbe8d7f97ea8a39b0c28c1be3b7ec"))])
+ (taxy-magit-section .
+		     [(0 9 1)
+		      ((emacs
+			(26 3))
+		       (magit-section
+			(3 2 1)))
+		      "View Taxy structs in a Magit Section buffer" tar
+		      ((:url . "https://github.com/alphapapa/taxy.el")
+		       (:keywords "lisp")
+		       (:maintainer "Adam Porter" . "adam@alphapapa.net")
+		       (:authors
+			("Adam Porter" . "adam@alphapapa.net"))
+		       (:commit . "62624c32d7f58bfa4acc89becc7cc8427d546aab"))])
  (temp-buffer-browse .
 		     [(1 5)
 		      ((emacs
@@ -2356,6 +3346,16 @@
 		       (:authors
 			("Leo Liu" . "sdl.web@gmail.com"))
 		       (:maintainer "Leo Liu" . "sdl.web@gmail.com"))])
+ (tempel .
+	 [(0 3)
+	  ((emacs
+	    (27 1)))
+	  "Tempo templates/snippets with in-buffer field editing" tar
+	  ((:url . "https://github.com/minad/tempel")
+	   (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
+	   (:authors
+	    ("Daniel Mendler" . "mail@daniel-mendler.de"))
+	   (:commit . "ee964c24b69579fcd5ec3c7d3d1d84d1ca3d90e4"))])
  (test-simple .
 	      [(1 3 0)
 	       ((cl-lib
@@ -2386,15 +3386,38 @@
 	  ("Oleh Krehel" . "ohwoeowho@gmail.com"))
 	 (:keywords "convenience"))])
  (tramp .
+<<<<<<< HEAD
 	[(2 5 0 4)
+=======
+	[(2 5 2 3)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	 ((emacs
 	   (25 1)))
 	 "Transparent Remote Access, Multiple Protocol" tar
 	 ((:url . "https://www.gnu.org/software/tramp/")
+<<<<<<< HEAD
 	  (:maintainer "Michael Albinus" . "michael.albinus@gmx.de")
 	  (:authors
 	   ("Kai Großjohann" . "kai.grossjohann@gmx.net"))
 	  (:keywords "comm" "processes"))])
+=======
+	  (:keywords "comm" "processes")
+	  (:maintainer "Michael Albinus" . "michael.albinus@gmx.de")
+	  (:authors
+	   ("Kai Großjohann" . "kai.grossjohann@gmx.net"))
+	  (:commit . "ad1b28dca70c70cd4c317dcb606c92dfb436ccee"))])
+ (tramp-nspawn .
+	       [(1 0)
+		((emacs
+		  (23)))
+		"Tramp integration for systemd-nspawn containers" tar
+		((:url . "https://github.com/bjc/tramp-nspawn")
+		 (:keywords "tramp" "nspawn" "machinectl" "systemd" "systemd-nspawn")
+		 (:maintainer "Brian Cully" . "bjc@kublai.com")
+		 (:authors
+		  ("Brian Cully" . "bjc@kublai.com"))
+		 (:commit . "b8380ee8a7c15ad4b96963d224969fc1a0337180"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (tramp-theme .
 	      [(0 2)
 	       ((emacs
@@ -2413,15 +3436,26 @@
 		("David Gonzalez Gandara" . "dggandara@member.fsf.org"))
 	       (:maintainer "David Gonzalez Gandara" . "dggandara@member.fsf.org"))])
  (transient .
+<<<<<<< HEAD
 	    [(0 3 2)
+=======
+	    [(0 3 7)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	     ((emacs
 	       (25 1)))
 	     "Transient commands" tar
 	     ((:url . "https://github.com/magit/transient")
+<<<<<<< HEAD
 	      (:maintainer "Jonas Bernoulli" . "jonas@bernoul.li")
 	      (:authors
 	       ("Jonas Bernoulli" . "jonas@bernoul.li"))
 	      (:keywords "bindings"))])
+=======
+	      (:keywords "bindings")
+	      (:maintainer "Jonas Bernoulli" . "jonas@bernoul.li")
+	      (:authors
+	       ("Jonas Bernoulli" . "jonas@bernoul.li")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (trie .
        [(0 5)
 	((tNFA
@@ -2435,28 +3469,44 @@
 	  ("Toby Cubitt" . "toby-predictive@dr-qubit.org"))
 	 (:keywords "extensions" "matching" "data structures trie" "ternary search tree" "tree" "completion" "regexp"))])
  (undo-tree .
+<<<<<<< HEAD
 	    [(0 7 5)
 	     nil "Treat undo history as a tree" single
 	     ((:keywords "convenience" "files" "undo" "redo" "history" "tree")
+=======
+	    [(0 8 2)
+	     ((queue
+	       (0 2))
+	      (emacs
+	       (24 3)))
+	     "Treat undo history as a tree" tar
+	     ((:url . "https://www.dr-qubit.org/undo-tree.html")
+	      (:keywords "convenience" "files" "undo" "redo" "history" "tree")
+	      (:maintainer "Toby Cubitt" . "toby+undo-tree@dr-qubit.org")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	      (:authors
-	       ("Toby Cubitt" . "toby-undo-tree@dr-qubit.org"))
-	      (:maintainer "Toby Cubitt" . "toby-undo-tree@dr-qubit.org")
-	      (:url . "http://www.dr-qubit.org/emacs.php"))])
+	       ("Toby Cubitt" . "toby+undo-tree@dr-qubit.org"))
+	      (:commit . "42aab056e37e033816b2d192f9121b89410b958e"))])
  (uni-confusables .
+<<<<<<< HEAD
 		  [(0 2)
+=======
+		  [(0 3)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		   nil "Unicode confusables table" tar
 		   ((:maintainer "Teodor Zlatanov" . "tzz@lifelogs.com")
-		    (:url . "http://elpa.gnu.org/packages/uni-confusables.html"))])
+		    (:url . "https://elpa.gnu.org/packages/uni-confusables.html")
+		    (:commit . "393e1adeec5b0eb51f9606983655cfe2272c6e54"))])
  (uniquify-files .
 		 [(1 0 3)
 		  ((emacs
 		    (25 0)))
 		  "Completion style for files, minimizing directories" tar
-		  ((:maintainer "Stephen Leake" . "stephen_leake@stephe-leake.org")
+		  ((:keywords "completion" "table" "uniquify")
+		   (:maintainer "Stephen Leake" . "stephen_leake@stephe-leake.org")
 		   (:authors
 		    ("Stephen Leake" . "stephen_leake@stephe-leake.org"))
-		   (:keywords "completion" "table" "uniquify")
-		   (:url . "http://elpa.gnu.org/packages/uniquify-files.html"))])
+		   (:url . "https://elpa.gnu.org/packages/uniquify-files.html"))])
  (url-http-ntlm .
 		[(2 0 4)
 		 ((cl-lib
@@ -2493,6 +3543,39 @@
 	   (:authors
 	    ("Yuan Fu" . "casouri@gmail.com"))
 	   (:keywords "convenience" "text" "table"))])
+<<<<<<< HEAD
+=======
+ (vc-backup .
+	    [(1 1 0)
+	     nil "VC backend for versioned backups" tar
+	     ((:url . "https://git.sr.ht/~pkal/vc-backup")
+	      (:keywords "vc")
+	      (:maintainer "Philip Kaludercic" . "philipk@posteo.net")
+	      (:authors
+	       ("Philip Kaludercic" . "philipk@posteo.net")))])
+ (vc-got .
+	 [(1 1)
+	  ((emacs
+	    (25 1)))
+	  "VC backend for Game of Trees VCS" tar
+	  ((:url . "https://git.omarpolo.com/vc-got/")
+	   (:keywords "vc" "tools")
+	   (:maintainer "Omar Polo" . "op@omarpolo.com")
+	   (:authors
+	    ("Omar Polo" . "op@omarpolo.com")
+	    ("Timo Myyrä" . "timo.myyra@bittivirhe.fi"))
+	   (:commit . "86d9909a7e54c02179e40afd05693c00f6689edc"))])
+ (vc-hgcmd .
+	   [(1 14 1)
+	    ((emacs
+	      (25 1)))
+	    "VC mercurial backend that uses hg command server" tar
+	    ((:url . "https://github.com/muffinmad/emacs-vc-hgcmd")
+	     (:keywords "vc")
+	     (:maintainer "Andrii Kolomoiets" . "andreyk.mad@gmail.com")
+	     (:authors
+	      ("Andrii Kolomoiets" . "andreyk.mad@gmail.com")))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (vcard .
 	[(0 2 1)
 	 ((emacs
@@ -2523,23 +3606,56 @@
 	   ("Justin Burkett" . "justin@burkett.cc"))
 	  (:keywords "diff"))])
  (verilog-mode .
+<<<<<<< HEAD
 	       [(2021 4 12 188864585)
 		nil "major mode for editing verilog source in Emacs" tar
 		((:url . "https://www.veripool.org")
+=======
+	       [(2021 10 14 127365406)
+		nil "major mode for editing verilog source in Emacs" tar
+		((:url . "https://www.veripool.org")
+		 (:keywords "languages")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		 (:maintainer "Michael McNamara" . "mac@verilog.com")
 		 (:authors
 		  ("Michael McNamara" . "mac@verilog.com")
 		  ("Wilson Snyder" . "wsnyder@wsnyder.org"))
+<<<<<<< HEAD
 		 (:keywords "languages"))])
  (vertico .
 	  [(0 8)
+=======
+		 (:commit . "86f08fb377e2b8f2df0614c48783bdce347f3758"))])
+ (vertico .
+	  [(0 22)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	   ((emacs
 	     (27 1)))
 	   "VERTical Interactive COmpletion" tar
 	   ((:url . "https://github.com/minad/vertico")
 	    (:maintainer "Daniel Mendler" . "mail@daniel-mendler.de")
 	    (:authors
+<<<<<<< HEAD
 	     ("Daniel Mendler" . "mail@daniel-mendler.de")))])
+=======
+	     ("Daniel Mendler" . "mail@daniel-mendler.de"))
+	    (:commit . "abf488b8bd501354cc36afb8901fa6929f34bbeb"))])
+ (vertico-posframe .
+		   [(0 5 3)
+		    ((emacs
+		      (26 0))
+		     (posframe
+		      (1 1 4))
+		     (vertico
+		      (0 13 0)))
+		    "Using posframe to show Vertico" tar
+		    ((:url . "https://github.com/tumashu/vertico-posframe")
+		     (:keywords "abbrev" "convenience" "matching" "vertico")
+		     (:maintainer "Feng Shu" . "tumashu@163.com")
+		     (:authors
+		      ("Feng Shu" . "tumashu@163.com"))
+		     (:commit . "47e9aa75431e76830d826f6b8e4466f62449819e"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (vigenere .
 	   [(1 0)
 	    ((emacs
@@ -2574,13 +3690,21 @@
 	(:maintainer "Andrey Kotlarski" . "m00naticus@gmail.com")
 	(:keywords "large files" "utilities"))])
  (wcheck-mode .
+<<<<<<< HEAD
 	      [(2020 10 4)
 	       nil "General interface for text checkers" single
 	       ((:keywords "text" "spell" "check" "languages" "ispell")
 		(:authors
 		 ("Teemu Likonen" . "tlikonen@iki.fi"))
+=======
+	      [(2021)
+	       nil "General interface for text checkers" tar
+	       ((:url . "https://github.com/tlikonen/wcheck-mode")
+		(:keywords "text" "spell" "check" "languages" "ispell")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 		(:maintainer "Teemu Likonen" . "tlikonen@iki.fi")
-		(:url . "https://github.com/tlikonen/wcheck-mode"))])
+		(:authors
+		 ("Teemu Likonen" . "tlikonen@iki.fi")))])
  (wconf .
 	[(0 2 1)
 	 ((emacs
@@ -2602,7 +3726,11 @@
 		("Eric Schulte" . "schulte.eric@gmail.com"))
 	       (:keywords "http" "server" "network"))])
  (webfeeder .
+<<<<<<< HEAD
 	    [(1 1 1)
+=======
+	    [(1 1 2)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	     ((emacs
 	       (25 1)))
 	     "Build RSS and Atom webfeeds from HTML files" tar
@@ -2622,14 +3750,23 @@
 	       ("Andrew Hyatt" . "ahyatt@gmail.com"))
 	      (:keywords "communication" "websocket" "server"))])
  (which-key .
+<<<<<<< HEAD
 	    [(3 5 1)
+=======
+	    [(3 6 0)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	     ((emacs
 	       (24 4)))
 	     "Display available keybindings in popup" tar
 	     ((:url . "https://github.com/justbur/emacs-which-key")
 	      (:maintainer "Justin Burkett" . "justin@burkett.cc")
 	      (:authors
+<<<<<<< HEAD
 	       ("Justin Burkett" . "justin@burkett.cc")))])
+=======
+	       ("Justin Burkett" . "justin@burkett.cc"))
+	      (:commit . "1217db8c6356659e67b35dedd9f5f260c06f6e99"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (windower .
 	   [(0 0 1)
 	    ((emacs
@@ -2649,17 +3786,21 @@
 		("Bastien" . "bzg@gnu.org"))
 	       (:maintainer "Bastien" . "bzg@gnu.org"))])
  (wisi .
+<<<<<<< HEAD
        [(3 1 3)
+=======
+       [(3 1 7)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	((emacs
-	  (25 0))
+	  (25 3))
 	 (seq
 	  (2 20)))
 	"Utilities for implementing an indentation/navigation engine using a generalized LALR parser" tar
 	((:url . "http://stephe-leake.org/ada/wisitoken.html")
+	 (:keywords "parser" "indentation" "navigation")
 	 (:maintainer "Stephen Leake" . "stephen_leake@stephe-leake.org")
 	 (:authors
-	  ("Stephen Leake" . "stephen_leake@stephe-leake.org"))
-	 (:keywords "parser" "indentation" "navigation"))])
+	  ("Stephen Leake" . "stephen_leake@stephe-leake.org")))])
  (wisitoken-grammar-mode .
 			 [(1 2 0)
 			  ((wisi
@@ -2682,13 +3823,21 @@
 	     ("Ivan Kanis" . "ivan@kanis.fr"))
 	    (:maintainer "Ivan Kanis" . "ivan@kanis.fr"))])
  (xclip .
+<<<<<<< HEAD
 	[(1 10)
 	 nil "Copy&paste GUI clipboard from text terminal" single
 	 ((:url . "http://elpa.gnu.org/packages/xclip.html")
 	  (:keywords "convenience" "tools")
+=======
+	[(1 11)
+	 nil "Copy&paste GUI clipboard from text terminal" tar
+	 ((:keywords "convenience" "tools")
+	  (:maintainer "Leo Liu" . "sdl.web@gmail.com")
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
 	  (:authors
 	   ("Leo Liu" . "sdl.web@gmail.com"))
-	  (:maintainer "Leo Liu" . "sdl.web@gmail.com"))])
+	  (:url . "https://elpa.gnu.org/packages/xclip.html")
+	  (:commit . "5b54645cab438e133e27b4690c57066f8271a992"))])
  (xelb .
        [(0 18)
 	((emacs
@@ -2702,22 +3851,32 @@
 	  ("Chris Feng" . "chris.w.feng@gmail.com"))
 	 (:keywords "unix"))])
  (xpm .
-      [(1 0 4)
-       nil "edit XPM images" tar
-       ((:url . "http://www.gnuvola.org/software/xpm/")
+      [(1 0 5)
+       ((cl-lib
+	 (0 5))
+	(queue
+	 (0 2)))
+       "edit XPM images" tar
+       ((:url . "https://www.gnuvola.org/software/xpm/")
+	(:keywords "multimedia" "xpm")
 	(:maintainer "Thien-Thi Nguyen" . "ttn@gnu.org")
 	(:authors
-	 ("Thien-Thi Nguyen" . "ttn@gnu.org"))
-	(:keywords "multimedia" "xpm"))])
+	 ("Thien-Thi Nguyen" . "ttn@gnu.org")))])
  (xr .
+<<<<<<< HEAD
      [(1 21)
+=======
+     [(1 22)
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
       ((emacs
 	(26 1)))
       "Convert string regexp to rx notation" tar
       ((:url . "https://github.com/mattiase/xr")
+       (:keywords "lisp" "regexps")
        (:maintainer "Mattias Engdegård" . "mattiase@acm.org")
        (:authors
 	("Mattias Engdegård" . "mattiase@acm.org"))
+<<<<<<< HEAD
        (:keywords "lisp" "regexps"))])
  (xref .
        [(1 1 0)
@@ -2725,6 +3884,16 @@
 	  (26 1)))
 	"Cross-referencing commands" tar
 	((:url . "https://elpa.gnu.org/packages/xref.html"))])
+=======
+       (:commit . "a873bbbe9cdf1abab63fc94730966f5a8f9adaa6"))])
+ (xref .
+       [(1 4 1)
+	((emacs
+	  (26 1)))
+	"Cross-referencing commands" tar
+	((:url . "https://elpa.gnu.org/packages/xref.html")
+	 (:commit . "890b08e41580a716c2f0b3f1a40ef9b52a19372c"))])
+>>>>>>> e65b57f (Cleanup and add support for Ruby's Solargraph support through eglot)
  (yasnippet .
 	    [(0 14 0)
 	     ((cl-lib

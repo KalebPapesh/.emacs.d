@@ -4,8 +4,6 @@
 ;;package and use-package
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
 ;;(package-initialize)
 ;;(unless package--initialized (package-initialize t))
 (when (version< emacs-version "27.0") (package-initialize))
@@ -38,6 +36,8 @@
 ;;-activate all the packages (in particular autoloads)
 (package-initialize)
 (require 'package)
+
+(setq byte-compile-warnings '(cl-functions))
 
 ;;function to auto-download a list of packages\
 ;;-list the packages you want
@@ -110,7 +110,7 @@
  '(org-agenda-files
    '("~/Dropbox/orgdocs/amazon/work.org" "~/Dropbox/orgdocs/taskdiary.org"))
  '(package-selected-packages
-   '(ac-inf-ruby ob-kotlin robe treemacs kotlin-mode web-mode-edit-element web-search web-server poly-ansible html-check-frag org-ac magit live-preview diff-hl use-package synosaurus solarized-theme pabbrev org-bullets moody minions latex-pretty-symbols gnuplot auto-compile)))
+   '(lua-mode web-mode-edit-element web-search web-server poly-ansible html-check-frag org-ac magit live-preview diff-hl use-package synosaurus solarized-theme pabbrev org-bullets moody minions latex-pretty-symbols gnuplot auto-compile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

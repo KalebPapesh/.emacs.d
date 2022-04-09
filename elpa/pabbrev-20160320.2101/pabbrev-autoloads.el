@@ -27,6 +27,8 @@ on in all buffers.
 
 \(fn &optional ARG)" t nil)
 
+(put 'global-pabbrev-mode 'globalized-minor-mode t)
+
 (defvar global-pabbrev-mode nil "\
 Non-nil if Global Pabbrev mode is enabled.
 See the `global-pabbrev-mode' command
