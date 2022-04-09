@@ -27,10 +27,16 @@
 (add-to-list 'load-path "~/.emacs.d/custom-el-files/")
 (if (not (display-graphic-p))
   (setq mac-command-modifier 'alt mac-option-modifier 'meta))
+<<<<<<< HEAD
 (require 'redo)
 (require 'mac-key-mode)
 (require 'dired+)
 (mac-key-mode 1)
+=======
+;;(require 'redo)
+;;(require 'mac-key-mode)
+;;(mac-key-mode 1)
+>>>>>>> ff62c0d (merge stuff)
 
 ;;remove scrollbar in minibuffer
 (set-window-scroll-bars (minibuffer-window) nil nil)
@@ -44,6 +50,7 @@
 ;;show pretty symbols
 (global-prettify-symbols-mode t)
 
+<<<<<<< HEAD
 ;; disable dired problomatic keys
 (setq diredp-bind-problematic-terminal-keys nil)
 
@@ -51,6 +58,11 @@
 (use-package dired-sidebar
   :ensure t
   :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+=======
+;;use dired sidebar
+(use-package dired-sidebar
+  :ensure t
+>>>>>>> ff62c0d (merge stuff)
   :commands (dired-sidebar-toggle-sidebar))
 (add-to-list 'load-path "path from pwd")
 (require 'dired-sidebar)
@@ -85,11 +97,15 @@
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
 (add-to-list 'org-structure-template-alist
+<<<<<<< HEAD
 	     '("el" . "src emacs-lisp"))
 
 ;;add robe for ruby ide functions
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
+=======
+             '("el" . "src emacs-lisp"))
+>>>>>>> ff62c0d (merge stuff)
 
 ;;set default font
 (setq kcp/default-font "Inconsolata")
@@ -162,9 +178,10 @@ other, future frames."
 (add-hook 'after-init-hook #'synosaurus-mode)
 (define-key global-map "\C-xs" 'synosaurus-lookup)
 
-;;save my location within a file
+;; save my location within a file
 (save-place-mode t)
 
+<<<<<<< HEAD
 ;;make C-w kill-region again
 (global-set-key "\C-w" 'kill-region)
 
@@ -249,6 +266,50 @@ other, future frames."
 
   ;;require html-check frag
   (require 'html-check-frag)
+=======
+;; get rid of annoying dos shit
+(setq default-buffer-file-coding-system 'utf-8-unix)
+(set-language-environment "UTF-8")
+
+;; use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;;use tramp
+(require 'tramp)
+(setq tramp-default-user "papkaleb" tramp-default-host "tyrell")
+(setq make-backup-files nil) (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; Fix arrow keys for dired
+(define-key input-decode-map "\e[1;10A" [M-S-up])
+(define-key input-decode-map "\e[1;10B" [M-S-down])
+(define-key input-decode-map "\e[1;10C" [M-S-right])
+(define-key input-decode-map "\e[1;10D" [M-S-left])
+
+(define-key input-decode-map "\e[1;3A" [M-up])
+(define-key input-decode-map "\e[1;3B" [M-down])
+(define-key input-decode-map "\e[1;3C" [M-right])
+(define-key input-decode-map "\e[1;3D" [M-left])
+
+;;require html-check frag
+(use-package html-check-frag)
+(require 'html-check-frag)
+
+(use-package eglot)
+(require 'eglot)
+(use-package company)
+(require 'company)
+
+(add-hook 'ruby-mode-hook 'eglot-ensure)
+
+;; inf ruby shell
+(global-set-key (kbd "C-c r r") 'inf-ruby)
+
+;; rbenv for version control
+(use-package rbenv)
+(require 'rbenv)
+(global-rbenv-mode)
+(setq rbenv-installation-dir "~/.rbenv/")
+>>>>>>> ff62c0d (merge stuff)
 
 ;;twitter bootstrap export
 (require 'ox-twbs)
@@ -257,6 +318,7 @@ other, future frames."
 ;;(require 'auto-complete)
 ;;(add-to-list 'ac-modes 'org-mode)
 ;;(ac-set-trigger-key "tab")
+(use-package org-ac)
 (require 'org-ac)
 (org-ac/config-default)
 
@@ -288,8 +350,13 @@ other, future frames."
 
 ;;quickly insert a block of elisp
 (add-to-list 'org-structure-template-alist
+<<<<<<< HEAD
 	     '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
 	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+=======
+             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+             '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+>>>>>>> ff62c0d (merge stuff)
 
 ;;keybindings
 (define-key global-map "\C-cl" 'org-store-link)
@@ -486,6 +553,13 @@ Added: %U")
 ;;global pabbrev-mode
 (global-pabbrev-mode 1)
 
+<<<<<<< HEAD
+=======
+;;lua-mode
+(use-package lua-mode)
+(require 'lua-mode)
+
+>>>>>>> ff62c0d (merge stuff)
 ;;tex-mode stuff
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -503,6 +577,10 @@ Added: %U")
 
 ;;setup files ending in .template to open in jinja2-mode
 (add-to-list 'auto-mode-alist '("\\.template\\'" . jinja2-mode))
+<<<<<<< HEAD
+=======
+(autoload 'jinja2-mode "Major mode for editing jinja2 code." t)
+>>>>>>> ff62c0d (merge stuff)
 
 ;;overwrite the selected region after marking and yanking. ie cut and paste
 (delete-selection-mode 1)

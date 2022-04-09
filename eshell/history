@@ -5,6 +5,7 @@ mdls -name kMDItemCFBundleIdentifier -r /Applications/Utilities/Terminal.app
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app/
 mdls -name kMDItemCFBundleIdentifier -r /Applications/Emacs.app 
+<<<<<<< HEAD
 ls
 cd ~/
 ls
@@ -54,3 +55,104 @@ ls papkaleb@papkaleb-tyrell.aka.corp.amazon.com/
 ls papkaleb@papkaleb-tyrell.aka.corp.amazon.com:/
 echo $TERM
 echo $PS1
+=======
+sudo chmod u+x crpy
+sudo chmod u+x crpy
+./crpy
+which python
+whereis python
+./crpy
+./crpy
+python
+./crpy
+python crpy
+python crpy
+python crpy -h
+python crpy -h
+python crpy
+python crpy
+python crpy
+python crpy
+python crpy
+ls
+sudo rm a b e i k l o s
+ls
+cat kalebiskool.txt 
+python crpy
+cat kalebiskool.txt 
+python crpy
+python crpy
+cat kalebiskool.txt 
+cat kalebiskool.txt 
+python crpy
+python crpy
+python crpy
+cat kalebiskool.txt 
+python crpy
+cat kalebiskool.txt 
+cat butts.txt
+ls
+rm butts.txt kalebiskool.txt
+python crpy
+python crpy
+python crpy
+python crpy
+python crpy
+python crpy dogs
+python crpy dogs
+python crpy dogs
+ls 
+python crpy
+ls
+python crpy
+python crpy
+python crpy
+python crpy dogs
+python crpy -h
+curl -k https://dns-manage.iad.corp.amazon.com/status-shared-zones-list
+curl -k https://dns-manage.iad.corp.amazon.com/status-shared-zone-list
+curl -K https://dns-manage-ext-web.amazon.com/cgi-bin/viewzone.cgi?DomainName=ap-northeast-3.amazonaws.com&DisplaySingle=On >> output.txt
+curl https://dns-manage-ext-web.amazon.com/cgi-bin/viewzone.cgi?DomainName=ap-northeast-3.amazonaws.com&DisplaySingle=On >> output.txt
+/apollo/env/DNSCMCutter/bin/cut-mcm.py --test --cut-mcm --template shutdown_wrr_fleet.template --vars /tmp/shutdown_wrr_fleet.vars
+egrep '[a-c]\.ns\.*\.amazonaws.com*$' dns-monitor.conf 
+egrep '[a-c].ns.*.amazonaws.com*$' dns-monitor.conf 
+grep '^[a-c]\.ns\.*\.amazonaws.com*$' dns-monitor.conf 
+egrep '^[a-c]\.ns\.*\.amazonaws.com*$' dns-monitor.conf 
+egrep '^[a-c]\.ns\.*\.amazonaws.com.*$' dns-monitor.conf 
+sudo chmod +x testsuccess.sh 
+./testsuccess.sh 
+sudo ./testsuccess.sh 
+ls
+sudo ./testsuccess.sh 
+./testsuccess.sh 
+./testsuccess.sh 
+./testsuccess.sh 
+./testsuccess.sh 
+cp PDNSDB-patching.master.vars ~/db-patching/icn
+cp PDNSDB-patching.master.vars ~/db-patching/cmh
+cp PDNSDB-patching.master.vars ~/db-patching/arn
+cp PDNSDB-patching.master.vars ~/db-patching/bah
+cp PDNSDB-patching.master.vars ~/db-patching/bom
+cp PDNSDB-patching.master.vars ~/db-patching/cdg
+cp PDNSDB-patching.master.vars ~/db-patching/cmh
+cp PDNSDB-patching.master.vars ~/db-patching/fra
+cp PDNSDB-patching.master.vars ~/db-patching/hkg
+cp PDNSDB-patching.master.vars ~/db-patching/kix
+cp PDNSDB-patching.master.vars ~/db-patching/lhr
+cp PDNSDB-patching.master.vars ~/db-patching/osu
+cp PDNSDB-patching.master.vars ~/db-patching/yul
+cp PDNSDB-patching.master.vars ~/db-patching/zhy
+cp PDNSDB-patching.master.vars ~/db-patching/pdx
+cp PDNSDB-patching.master.vars ~/db-patching/bjs
+cp PDNSDB-patching.master.vars ~/db-patching/nrt
+cp PDNSDB-patching.master.vars ~/db-patching/sin
+cp PDNSDB-patching.master.vars ~/db-patching/syd
+cp PDNSDB-patching.master.vars ~/db-patching/dub
+cp PDNSDB-patching.master.vars ~/db-patching/gru
+rm ~/db-patching/osu/PDNSDB-patching.master.vars 
+rm ~/db-patching/nrt/PDNSDB-patching.master.vars 
+rm ~/db-patching/sin/PDNSDB-patching.master.vars 
+rm ~/db-patching/syd/PDNSDB-patching.master.vars 
+rm ~/db-patching/dub/PDNSDB-patching.master.vars 
+expand-hostclass dns-utility-bjs
+>>>>>>> ff62c0d (merge stuff)
