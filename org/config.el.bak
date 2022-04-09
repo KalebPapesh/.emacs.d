@@ -43,9 +43,13 @@
 ;;show pretty symbols
 (global-prettify-symbols-mode t)
 
+;; disable dired problomatic keys
+(setq diredp-bind-problematic-terminal-keys nil)
+
 ;;use dired sidebar
 (use-package dired-sidebar
   :ensure t
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :commands (dired-sidebar-toggle-sidebar))
 (add-to-list 'load-path "path from pwd")
 (require 'dired-sidebar)
@@ -62,7 +66,7 @@
 (use-package minions
   :config
   (setq minions-mode-line-lighter ""
-        minions-mode-line-delimiters '("" . ""))
+	minions-mode-line-delimiters '("" . ""))
   (minions-mode 1))
 
 ;;softly highlight the background of a line
@@ -111,15 +115,15 @@ other, future frames."
   "Increase current font size by a factor of `kcp/font-change-increment'."
   (interactive)
   (setq kcp/current-font-size
-        (ceiling (* kcp/current-font-size kcp/font-change-increment)))
+	(ceiling (* kcp/current-font-size kcp/font-change-increment)))
   (kcp/set-font-size))
 
 (defun kcp/decrease-font-size ()
   "Decrease current font size by a factor of `kcp/font-change-increment', down to a minimum size of 1."
   (interactive)
   (setq kcp/current-font-size
-        (max 1
-             (floor (/ kcp/current-font-size kcp/font-change-increment))))
+	(max 1
+	     (floor (/ kcp/current-font-size kcp/font-change-increment))))
   (kcp/set-font-size))
 
 (define-key global-map (kbd "C-)") 'kcp/reset-font-size)
@@ -152,70 +156,6 @@ other, future frames."
 (setq-default synosaurus-backend 'synosaurus-backend-wordnet)
 (add-hook 'after-init-hook #'synosaurus-mode)
 (define-key global-map "\C-xs" 'synosaurus-lookup)
-
-;;make C-w kill-region again
-  (global-set-key "\C-w" 'kill-region)
-
-  ;;load emacs-eshell.org file
-  (org-babel-load-file "~/.emacs.d/org/remote-shell.org")
-
-  ;;use tramp
-  (require 'tramp)
-  (setq tramp-default-method "ssh")
-  (setq tramp-terminal-type "dumb")
-  (setq tramp-terminal-prompt-regexp "> ")
-
-  ;;set global autocomplete mode
-  (ac-config-default)
-  (global-auto-complete-mode t)
-
-  ;;set dumb terminal type to bash shell
-  (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
-
-  ;;make tramp respect the PATH variable on the remote machine
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-
-  ;;open shell in it's own buffer not splitscreen
-  (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
-
-  (defun term-switch-to-shell-mode ()
-  (interactive)
-  (shell-mode)
-  (set-process-filter  (get-buffer-process (current-buffer)) 'comint-output-filter )
-  (compilation-shell-minor-mode 1)
-  (comint-send-input))
-
-  ;;switch to term mode with C-l
-  (defun shell-switch-to-term-mode ()
-  (compilation-shell-minor-mode -1)
-  (font-lock-mode -1)
-  (set-process-filter  (get-buffer-process (current-buffer)) 'term-emulate-terminal)
-  (term-mode)
-  (term-char-mode)
-  (term-send-raw-string (kbd "C-l")))
-
-  ;; My DevDesktop has quite a few consumed environments on it.  Adding
-  ;; each of their "bin" directories to my tramp list.
-  (add-to-list 'tramp-remote-path "/apollo/env/RemoteCommand/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/dotfiles/zshrc")
-  ;; For some reason, a few of the machines I go to have different cases for envImprovement...
-  (add-to-list 'tramp-remote-path "/home/papkaleb/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/AmazonAwsCli/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/ApolloCommandLine/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/BarkCLI/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/DevDesktop/")
-  (add-to-list 'tramp-remote-path "/apollo/env/DNSCMCutter/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools_UltraDNS/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/EnvImprovement/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/OctaneBrazilTools/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/OdinTools/bin")
-  (add-to-list 'tramp-remote-path "/apollo/env/SDETools/bin")
-
-
-  ;; I don't like my history littering many spots, and don't always have a home directory on remotes.
-  (setq tramp-histfile-override "/tmp/.papkaleb_tramp_history")
 
 ;; save my location within a file
 (save-place-mode t)
@@ -267,9 +207,14 @@ other, future frames."
 (require 'ox-twbs)
 
 ;;tab to autocomplete org mode
+;;(require 'auto-complete)
+;;(add-to-list 'ac-modes 'org-mode)
+;;(ac-set-trigger-key "tab")
 (use-package org-ac)
 (require 'org-ac)
 (org-ac/config-default)
+
+(require 'org-habit)
 
 ;;have nice collapse arrows
 (setq org-ellipsis "⤵")
@@ -286,6 +231,8 @@ other, future frames."
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;;make TAB act as if it were issued in a buffer of the languages major mode
+(setq org-src-tab-acts-natively t)
+
 ;;autocomplete with tab in org mode
 ;;(add-to-list 'ac-modes 'org-mode)
 ;;(ac-set-trigger-key "TAB")
@@ -295,8 +242,8 @@ other, future frames."
 
 ;;quickly insert a block of elisp
 (add-to-list 'org-structure-template-alist
-	     '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
-	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+             '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
 
 ;;keybindings
 (define-key global-map "\C-cl" 'org-store-link)
@@ -314,12 +261,14 @@ other, future frames."
 (setq org-latex-listings 'minted)
 
 ;;task and org-capture management
-(setq org-directory "~/Dropbox/orgdocs")
+(setq org-directory "~/Dropbox/orgdocs/")
 
 (defun org-file-path (filename)
   "Return the absolute address of an org file, given its relative name."
   (concat (file-name-as-directory org-directory) filename))
 
+;;(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
+;;(setq org-index-file (org-file-path "index.org"))
 (setq org-archive-location
       (concat (org-file-path "archive.org") "::* From %s"))
 
@@ -329,17 +278,12 @@ other, future frames."
 			     "~/Dropbox/orgdocs/timelog.org"
 			     "~/Dropbox/orgdocs/taskdiary.org"
 			     "~/Dropbox/orgdocs/workjournal.org"))
-(setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
-(setq org-index-file (org-file-path "index.org"))
-(setq org-archive-location
-      (concat (org-file-path "archive.org") "::* From %s"))
-
 ;;set TODO states
 (setq org-todo-keywords
   '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
 
 ;;store TODOs in index.org
-(setq org-agenda-files (list org-index-file))
+;;(setq org-agenda-files (list org-index-file))
 
 ;;use syntax hi
 (setq org-src-fontify-natively t)
@@ -542,6 +486,11 @@ Added: %U")
 
 (global-set-key (kbd "C-x 2") 'kcp/split-window-below-and-switch)
 (global-set-key (kbd "C-x 3") 'kcp/split-window-right-and-switch)
+
+;;(if (not (display-graphic-p))
+;;(setq default-frame-alist
+;;      '((background-color . "black")
+;;	(foreground-color . "green"))))
 
 (if (display-graphic-p)
  (load-theme 'solarized-dark t)

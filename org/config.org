@@ -167,40 +167,40 @@ other, future frames."
 
 * Editing
 #+BEGIN_SRC emacs-lisp
-    ;;make C-w kill-region again
-    (global-set-key "\C-w" 'kill-region)
+  ;;make C-w kill-region again
+  (global-set-key "\C-w" 'kill-region)
 
-    ;;load emacs-eshell.org file
-    (org-babel-load-file "~/.emacs.d/org/remote-shell.org")
+  ;;load emacs-eshell.org file
+  (org-babel-load-file "~/.emacs.d/org/remote-shell.org")
 
-    ;;use tramp
-    (require 'tramp)
-    (setq tramp-default-method "ssh")
-    (setq tramp-terminal-type "dumb")
-    (setq tramp-terminal-prompt-regexp "> ")
+  ;;use tramp
+  (require 'tramp)
+  (setq tramp-default-method "ssh")
+  (setq tramp-terminal-type "dumb")
+  (setq tramp-terminal-prompt-regexp "> ")
 
-    ;;set global autocomplete mode
-    (ac-config-default)
-    (global-auto-complete-mode t)
+  ;;set global autocomplete mode
+  (ac-config-default)
+  (global-auto-complete-mode t)
 
-    ;;set dumb terminal type to bash shell
-    (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+  ;;set dumb terminal type to bash shell
+  (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
-    ;;make tramp respect the PATH variable on the remote machine
-    (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  ;;make tramp respect the PATH variable on the remote machine
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
-    ;;open shell in it's own buffer not splitscreen
-    (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+  ;;open shell in it's own buffer not splitscreen
+  (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
 
-    (defun term-switch-to-shell-mode ()
+  (defun term-switch-to-shell-mode ()
     (interactive)
     (shell-mode)
     (set-process-filter  (get-buffer-process (current-buffer)) 'comint-output-filter )
     (compilation-shell-minor-mode 1)
     (comint-send-input))
 
-    ;;switch to term mode with C-l
-    (defun shell-switch-to-term-mode ()
+  ;;switch to term mode with C-l
+  (defun shell-switch-to-term-mode ()
     (compilation-shell-minor-mode -1)
     (font-lock-mode -1)
     (set-process-filter  (get-buffer-process (current-buffer)) 'term-emulate-terminal)
@@ -208,28 +208,27 @@ other, future frames."
     (term-char-mode)
     (term-send-raw-string (kbd "C-l")))
 
-    ;; My DevDesktop has quite a few consumed environments on it.  Adding
-    ;; each of their "bin" directories to my tramp list.
-    (add-to-list 'tramp-remote-path "/apollo/env/RemoteCommand/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/dotfiles/zshrc")
-    ;; For some reason, a few of the machines I go to have different cases for envImprovement...
-    (add-to-list 'tramp-remote-path "/home/papkaleb/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/AmazonAwsCli/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/ApolloCommandLine/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/BarkCLI/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/DevDesktop/")
-    (add-to-list 'tramp-remote-path "/apollo/env/DNSCMCutter/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/DNSTools/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/DNSTools_UltraDNS/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/EnvImprovement/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/OctaneBrazilTools/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/OdinTools/bin")
-    (add-to-list 'tramp-remote-path "/apollo/env/SDETools/bin")
+  ;; My DevDesktop has quite a few consumed environments on it.  Adding
+  ;; each of their "bin" directories to my tramp list.
+  (add-to-list 'tramp-remote-path "/apollo/env/RemoteCommand/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/envImprovement/dotfiles/zshrc")
+  ;; For some reason, a few of the machines I go to have different cases for envImprovement...
+  (add-to-list 'tramp-remote-path "/apollo/env/AmazonAwsCli/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/ApolloCommandLine/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/BarkCLI/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DevDesktop/")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSCMCutter/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/DNSTools_UltraDNS/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/EnvImprovement/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/OctaneBrazilTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/OdinTools/bin")
+  (add-to-list 'tramp-remote-path "/apollo/env/SDETools/bin")
 
 
-    ;; I don't like my history littering many spots, and don't always have a home directory on remotes.
-    (setq tramp-histfile-override "/tmp/.papkaleb_tramp_history")
+  ;; I don't like my history littering many spots, and don't always have a home directory on remotes.
+  (setq tramp-histfile-override "/tmp/.papkaleb_tramp_history")
 
   ;; save my location within a file
   (save-place-mode t)
@@ -243,7 +242,6 @@ other, future frames."
 
   ;;use tramp
   (require 'tramp)
-  (setq tramp-default-user "papkaleb" tramp-default-host "tyrell")
   (setq make-backup-files nil) (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
   ;; Fix arrow keys for dired

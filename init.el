@@ -4,6 +4,8 @@
 ;;package and use-package
 
 (require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/") t)
 ;;(package-initialize)
 ;;(unless package--initialized (package-initialize t))
 (when (version< emacs-version "27.0") (package-initialize))
@@ -33,11 +35,10 @@
 
 (setq use-package-always-ensure t)
 
+(setq byte-compile-warnings '(cl-functions))
 ;;-activate all the packages (in particular autoloads)
 (package-initialize)
 (require 'package)
-
-(setq byte-compile-warnings '(cl-functions))
 
 ;;function to auto-download a list of packages\
 ;;-list the packages you want
