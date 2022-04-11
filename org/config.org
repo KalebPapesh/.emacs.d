@@ -285,111 +285,115 @@ other, future frames."
 #+END_SRC
 * Org Stuff
 #+BEGIN_SRC emacs-lisp
-    ;;twitter bootstrap export
-    (require 'ox-twbs)
+  ;;twitter bootstrap export
+  (require 'ox-twbs)
 
-    ;;tab to autocomplete org mode
-    (use-package org-ac)
-    (require 'org-ac)
-    (org-ac/config-default)
+  ;; use pomodoro mode to increase productivity
+  (use-package org-pomodoro)
+  (require 'org-pomodoro)
 
-    ;;have nice collapse arrows
-    (setq org-ellipsis "⤵")
+  ;;tab to autocomplete org mode
+  (use-package org-ac)
+  (require 'org-ac)
+  (org-ac/config-default)
 
-    ;;org mode bullets
-    (require 'org-bullets)
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-    (setq org-hide-leading-stars t)
+  ;;have nice collapse arrows
+  (setq org-ellipsis "⤵")
 
-    ;;use syntax highlighting in source blocks while editing
-    (setq org-src-fontify-natively t)
+  ;;org mode bullets
+  (require 'org-bullets)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  (setq org-hide-leading-stars t)
 
-    ;;word wrap in every textmode
-    (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+  ;;use syntax highlighting in source blocks while editing
+  (setq org-src-fontify-natively t)
 
-    ;;make TAB act as if it were issued in a buffer of the languages major mode
-    ;;autocomplete with tab in org mode
-    ;;(add-to-list 'ac-modes 'org-mode)
-    ;;(ac-set-trigger-key "TAB")
+  ;;word wrap in every textmode
+  (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
-    ;;when editing a code snippet, use current window
-    (setq org-src-window-setup 'current-window)
+  ;;make TAB act as if it were issued in a buffer of the languages major mode
+  ;;autocomplete with tab in org mode
+  ;;(add-to-list 'ac-modes 'org-mode)
+  ;;(ac-set-trigger-key "TAB")
 
-    ;;quickly insert a block of elisp
-    (add-to-list 'org-structure-template-alist
-		 '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
-		 '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+  ;;when editing a code snippet, use current window
+  (setq org-src-window-setup 'current-window)
 
-    ;;keybindings
-    (define-key global-map "\C-cl" 'org-store-link)
-    (define-key global-map "\C-ca" 'org-agenda)
-    (define-key global-map "\C-cc" 'org-capture)
+  ;;quickly insert a block of elisp
+  (add-to-list 'org-structure-template-alist
+               '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+               '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
 
-    ;;exporting to PDF
-    (setq org-latex-pdf-process
-	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  ;;keybindings
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-cc" 'org-capture)
 
-    ;;include =minted= package in all of my LaTeX exports
-    (add-to-list 'org-latex-packages-alist '("" "minted"))
-    (setq org-latex-listings 'minted)
+  ;;exporting to PDF
+  (setq org-latex-pdf-process
+        '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-    ;;task and org-capture management
-    (setq org-directory "~/Dropbox/orgdocs")
+  ;;include =minted= package in all of my LaTeX exports
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
 
-    (defun org-file-path (filename)
-      "Return the absolute address of an org file, given its relative name."
-      (concat (file-name-as-directory org-directory) filename))
+  ;;task and org-capture management
+  (setq org-directory "~/Dropbox/orgdocs")
 
-    (setq org-archive-location
-	  (concat (org-file-path "archive.org") "::* From %s"))
+  (defun org-file-path (filename)
+    "Return the absolute address of an org file, given its relative name."
+    (concat (file-name-as-directory org-directory) filename))
 
-    (setq org-agenda-files (list "~/Dropbox/orgdocs/amazon/work.org"
-				 "~/Dropbox/orgdocs/school/school.org"
-				 "~/Dropbox/orgdocs/home.org"
-				 "~/Dropbox/orgdocs/timelog.org"
-				 "~/Dropbox/orgdocs/taskdiary.org"
-				 "~/Dropbox/orgdocs/workjournal.org"))
-    (setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
-    (setq org-index-file (org-file-path "index.org"))
-    (setq org-archive-location
-	  (concat (org-file-path "archive.org") "::* From %s"))
+  (setq org-archive-location
+        (concat (org-file-path "archive.org") "::* From %s"))
 
-    ;;set TODO states
-    (setq org-todo-keywords
-      '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
+  (setq org-agenda-files (list "~/Dropbox/orgdocs/amazon/work.org"
+                               "~/Dropbox/orgdocs/school/school.org"
+                               "~/Dropbox/orgdocs/home.org"
+                               "~/Dropbox/orgdocs/timelog.org"
+                               "~/Dropbox/orgdocs/taskdiary.org"
+                               "~/Dropbox/orgdocs/workjournal.org"))
+  (setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
+  (setq org-index-file (org-file-path "index.org"))
+  (setq org-archive-location
+        (concat (org-file-path "archive.org") "::* From %s"))
 
-    ;;store TODOs in index.org
-    (setq org-agenda-files (list org-index-file))
+  ;;set TODO states
+  (setq org-todo-keywords
+    '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
 
-    ;;use syntax hi
-    (setq org-src-fontify-natively t)
+  ;;store TODOs in index.org
+  (setq org-agenda-files (list org-index-file))
 
-    ;;ORG Capture stuff
-    (setq org-capture-templates
-     '(
-    ("a" "Appointment" entry (file+headline
-    "~/Dropbox/orgdocs/taskdiary.org" "Calendar")
-    "* APPT %^{Description} %^g
-    %?
-    Added: %U")
-    ("n" "Notes" entry (file+datetree
-    "~/Dropbox/orgdocs/taskdiary.org")
-    "* %^{Description} %^g %?
-    Added: %U")
-    ("t" "Task Diary" entry (file+datetree
-    "~/Dropbox/orgdocs/taskdiary.org")
-    "* TODO %^{Description}  %^g
-    %?
-    Added: %U")
-    ("j" "Journal" entry (file+datetree
-    "~/Dropbox/orgdocs/workjournal.org")
-    "** %^{Heading}")
-    ("l" "Log Time" entry (file+datetree
-    "~/Dropbox/orgdocs/timelog.org" )
-    "** %U - %^{Activity}  :TIME:")
-    ))
+  ;;use syntax hi
+  (setq org-src-fontify-natively t)
+
+  ;;ORG Capture stuff
+  (setq org-capture-templates
+   '(
+  ("a" "Appointment" entry (file+headline
+  "~/Dropbox/orgdocs/taskdiary.org" "Calendar")
+  "* APPT %^{Description} %^g
+  %?
+  Added: %U")
+  ("n" "Notes" entry (file+datetree
+  "~/Dropbox/orgdocs/taskdiary.org")
+  "* %^{Description} %^g %?
+  Added: %U")
+  ("t" "Task Diary" entry (file+datetree
+  "~/Dropbox/orgdocs/taskdiary.org")
+  "* TODO %^{Description}  %^g
+  %?
+  Added: %U")
+  ("j" "Journal" entry (file+datetree
+  "~/Dropbox/orgdocs/workjournal.org")
+  "** %^{Heading}")
+  ("l" "Log Time" entry (file+datetree
+  "~/Dropbox/orgdocs/timelog.org" )
+  "** %U - %^{Activity}  :TIME:")
+  ))
 #+END_SRC
 * Exporting
 #+BEGIN_SRC emacs-lisp

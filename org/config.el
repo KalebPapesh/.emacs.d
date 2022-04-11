@@ -264,6 +264,10 @@ other, future frames."
 ;;twitter bootstrap export
 (require 'ox-twbs)
 
+;; use pomodoro mode to increase productivity
+(use-package org-pomodoro)
+(require 'org-pomodoro)
+
 ;;tab to autocomplete org mode
 (use-package org-ac)
 (require 'org-ac)
@@ -293,8 +297,8 @@ other, future frames."
 
 ;;quickly insert a block of elisp
 (add-to-list 'org-structure-template-alist
-	     '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
-	     '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
+             '("el" "#+BEGIN_SRC emacs-lisp \n\n#+END_SRC")
+             '("py" "#+BEGIN_SRC python \n\n#+END_SRC"))
 
 ;;keybindings
 (define-key global-map "\C-cl" 'org-store-link)
@@ -304,8 +308,8 @@ other, future frames."
 ;;exporting to PDF
 (setq org-latex-pdf-process
       '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	"xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	"xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 ;;include =minted= package in all of my LaTeX exports
 (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -322,11 +326,11 @@ other, future frames."
       (concat (org-file-path "archive.org") "::* From %s"))
 
 (setq org-agenda-files (list "~/Dropbox/orgdocs/amazon/work.org"
-			     "~/Dropbox/orgdocs/school/school.org"
-			     "~/Dropbox/orgdocs/home.org"
-			     "~/Dropbox/orgdocs/timelog.org"
-			     "~/Dropbox/orgdocs/taskdiary.org"
-			     "~/Dropbox/orgdocs/workjournal.org"))
+                             "~/Dropbox/orgdocs/school/school.org"
+                             "~/Dropbox/orgdocs/home.org"
+                             "~/Dropbox/orgdocs/timelog.org"
+                             "~/Dropbox/orgdocs/taskdiary.org"
+                             "~/Dropbox/orgdocs/workjournal.org"))
 (setq org-inbox-file "~/Dropbox/orgdocs/inbox.org")
 (setq org-index-file (org-file-path "index.org"))
 (setq org-archive-location
