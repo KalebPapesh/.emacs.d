@@ -6,8 +6,7 @@
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
-;;(package-initialize)
-;;(unless package--initialized (package-initialize t))
+
 (when (version< emacs-version "27.0") (package-initialize))
 
 ;; Bootstrap 'use-package'
@@ -22,10 +21,9 @@
 (setq use-package-always-ensure t)
 
 ;;-list the repositories containing them
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
 
 
 ;;-install the missing packages
@@ -37,7 +35,6 @@
 
 (setq byte-compile-warnings '(cl-functions))
 ;;-activate all the packages (in particular autoloads)
-(package-initialize)
 (require 'package)
 
 ;;function to auto-download a list of packages\
